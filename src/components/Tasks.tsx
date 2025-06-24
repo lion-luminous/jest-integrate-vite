@@ -33,7 +33,7 @@ const columns: TableProps<ITask>['columns'] = [
 			<Tag
 				color={
 					status === 'COMPLETED'
-						? 'blue'
+						? 'green'
 						: status === 'NOT_COMPLETED'
 							? 'red'
 							: 'yellow'

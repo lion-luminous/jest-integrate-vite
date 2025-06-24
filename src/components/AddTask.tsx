@@ -47,7 +47,7 @@ const AddTask = () => {
 				]}
 			>
 				<Input
-					placeholder='Task title...'
+					placeholder='Task title....'
 					autoFocus
 					ref={inputRef}
 				/>

@@ -42,11 +42,11 @@
 
 /* Remove any remaining white text */
 .ant-typography {
-  color: #8B5CF6 !important;
+  color: #FFD700 !important;
 }
 
 .ant-empty-description {
-  color: #8B5CF6 !important;
+  color: #FFD700 !important;
 }
 
 /* Pagination styling */

@@ -90,9 +90,10 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({ onGoogleSignIn }) => {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               fontWeight: '900',
-              letterSpacing: '2px'
+              letterSpacing: '3px',
+              fontSize: 'clamp(16px, 4vw, 20px)'
             }}>
-              GOOGLING
+              OOGLING
             </span>
           </Button>
 

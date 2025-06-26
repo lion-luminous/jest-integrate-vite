@@ -295,7 +295,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
               transform: 'perspective(1px) translateZ(0)',
               backfaceVisibility: 'hidden',
-              fontSize: 'clamp(12px, 3.5vw, 18px)',
+              fontSize: 'clamp(16px, 5vw, 24px)',
               padding: '0 8px'
             }}
           >
@@ -305,9 +305,9 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               fontWeight: '900',
-              letterSpacing: '2px'
+              letterSpacing: '3px'
             }}>
-              GOOGLING
+              OOGLING
             </span>
           </Button>
 

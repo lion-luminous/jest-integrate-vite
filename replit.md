@@ -77,10 +77,18 @@ This is a React-based todo application built with TypeScript and Vite. The app f
 - **Port Configuration**: Configured for port 5000 (mapped to external port 80)
 - **Hot Reload**: Vite provides fast refresh for development
 
-### Production Build
+### Production Deployment
 - **Build Process**: `npm run build` compiles TypeScript and creates optimized bundle
-- **Preview**: `npm run preview` serves production build locally
-- **Static Assets**: Built files ready for static hosting or server deployment
+- **Production Server**: Custom Node.js HTTP server (`http-server.js`) serves static files
+- **Deployment Ready**: Configured for Replit Autoscale deployment
+- **Health Monitoring**: `/health` endpoint for deployment health checks
+- **Client-side Routing**: Proper SPA routing support for React Router
+
+### Deployment Configuration
+- **Server**: `http-server.js` - Custom HTTP server without Express dependencies
+- **Build Output**: `dist/` directory with optimized production assets
+- **Deployment Target**: Replit Autoscale with automatic build and deployment
+- **Environment**: Production-ready with proper CORS and static file serving
 
 ### Code Quality
 - **Linting**: ESLint with TypeScript and React hooks rules
@@ -89,7 +97,14 @@ This is a React-based todo application built with TypeScript and Vite. The app f
 
 ## Changelog
 
-- June 26, 2025. Initial setup
+- June 26, 2025: Initial React Todo App setup with TypeScript, Vite, and Ant Design
+- June 26, 2025: Fixed deployment configuration for Replit Autoscale
+  - Created custom HTTP server to avoid Express compatibility issues
+  - Configured proper production build process
+  - Added deployment health checks and CORS support
+  - Resolved "Missing deployment section" error
+  - Resolved "Invalid run command" error  
+  - Resolved "No proper build process" error
 
 ## User Preferences
 

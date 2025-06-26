@@ -76,8 +76,8 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               ETHEREAL DEGENERATE
             </Title>
             <Text className="text-xl" style={{ 
-              color: '#FFFFFF', 
-              textShadow: '0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4)',
+              color: '#FFA500', 
+              textShadow: '0 0 15px rgba(255, 165, 0, 0.8), 0 0 30px rgba(255, 165, 0, 0.4)',
               fontWeight: '700',
               letterSpacing: '1px'
             }}>
@@ -109,7 +109,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
                 filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))'
               }} />
               <Text className="text-sm block" style={{ 
-                color: '#FFFFFF',
+                color: '#FFD700',
                 textShadow: '0 0 8px rgba(255, 215, 0, 0.6)',
                 fontWeight: '700',
                 letterSpacing: '0.5px'
@@ -128,7 +128,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
                 filter: 'drop-shadow(0 0 8px rgba(255, 165, 0, 0.8))'
               }} />
               <Text className="text-sm block" style={{ 
-                color: '#FFFFFF',
+                color: '#FFD700',
                 textShadow: '0 0 8px rgba(255, 165, 0, 0.6)',
                 fontWeight: '700',
                 letterSpacing: '0.5px'

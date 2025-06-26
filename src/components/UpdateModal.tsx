@@ -57,8 +57,8 @@ const UpdateModal = () => {
                         cancelButtonProps={{
                                 style: {
                                         background: '#1a1a1a',
-                                        color: '#FFFFFF',
-                                        border: '1px solid rgba(255, 255, 255, 0.3)'
+                                        color: '#FFA500',
+                                        border: '1px solid rgba(255, 165, 0, 0.3)'
                                 }
                         }}
                 >

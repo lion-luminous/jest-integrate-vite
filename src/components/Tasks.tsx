@@ -11,7 +11,7 @@ const columns: TableProps<ITask>['columns'] = [
                 title: <span style={{ color: '#FFD700', fontWeight: '700' }}>ID</span>,
                 dataIndex: 'taskId',
                 key: 'taskId',
-                render: (id: string) => <span style={{ color: '#FFFFFF' }}>{id.slice(-5)}</span>
+                render: (id: string) => <span style={{ color: '#FFD700' }}>{id.slice(-5)}</span>
         },
         {
                 title: <span style={{ color: '#FFD700', fontWeight: '700' }}>TASK</span>,
@@ -21,7 +21,7 @@ const columns: TableProps<ITask>['columns'] = [
                 render: (desc: string, record: ITask) => (
                         <Space direction='vertical'>
                                 <h4 className='font-bold text-lg' style={{ color: '#FFD700', margin: 0 }}>{record.title}</h4>
-                                <p style={{ color: '#FFFFFF', margin: 0 }}>{desc}</p>
+                                <p style={{ color: '#FFA500', margin: 0 }}>{desc}</p>
                         </Space>
                 )
         },

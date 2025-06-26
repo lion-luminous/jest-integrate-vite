@@ -38,12 +38,12 @@ const Todo = () => {
                                 </Typography.Title>
                                 <Typography.Text 
                                         style={{
-                                                color: '#FFFFFF',
+                                                color: '#FFA500',
                                                 textAlign: 'center',
                                                 display: 'block',
                                                 fontSize: '18px',
                                                 fontWeight: '600',
-                                                textShadow: '0 0 10px rgba(255, 215, 0, 0.6)',
+                                                textShadow: '0 0 10px rgba(255, 165, 0, 0.6)',
                                                 marginBottom: '20px'
                                         }}
                                 >

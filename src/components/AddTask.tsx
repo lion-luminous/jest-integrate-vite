@@ -58,7 +58,7 @@ const AddTask = () => {
                                         style={{
                                                 background: '#1a1a1a',
                                                 border: '1px solid rgba(255, 215, 0, 0.5)',
-                                                color: '#FFFFFF'
+                                                color: '#FFD700'
                                         }}
                                 />
                         </Form.Item>
@@ -77,7 +77,7 @@ const AddTask = () => {
                                         style={{
                                                 background: '#1a1a1a',
                                                 border: '1px solid rgba(255, 215, 0, 0.5)',
-                                                color: '#FFFFFF'
+                                                color: '#FFD700'
                                         }}
                                 />
                         </Form.Item>

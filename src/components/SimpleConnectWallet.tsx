@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Card, Typography, Space, Divider, message } from 'antd';
-import { GoogleOutlined, WalletOutlined, FireOutlined, RocketOutlined } from '@ant-design/icons';
+import { GoogleOutlined, FireOutlined, RocketOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 

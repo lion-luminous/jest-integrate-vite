@@ -24,7 +24,7 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({ onGoogleSignIn }) => {
           {/* Animated Header */}
           <div className="mb-8">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 animate-bounce">
-              <WalletOutlined style={{ fontSize: '32px', color: 'white' }} />
+              <WalletOutlined style={{ fontSize: '32px', color: 'white' } as React.CSSProperties} />
             </div>
             <Title level={1} className="!text-white !mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Connect Wallet

@@ -22,20 +22,33 @@ const Todo = () => {
                                         padding: '40px'
                                 }}
                         >
-                                <Typography.Title 
-                                        level={1}
-                                        style={{
-                                                color: '#EC4899',
-                                                textAlign: 'center',
-                                                fontWeight: 'bold',
-                                                textShadow: '0 0 20px rgba(236, 72, 153, 0.9), 0 0 40px rgba(236, 72, 153, 0.6)',
-                                                fontSize: '2.5rem',
-                                                letterSpacing: '2px',
-                                                marginBottom: '8px'
-                                        }}
-                                >
-                                        ETHEREAL DEGENERATE
-                                </Typography.Title>
+                                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', letterSpacing: '2px', textAlign: 'center', marginBottom: '8px' }}>
+                                        {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
+                                                const colors = [
+                                                        '#FF0080', '#FF4080', '#FF8040', '#FFB020', '#FFE000', '#C0FF00', 
+                                                        '#80FF40', '#40FF80', '#00FFB0', '#00E0FF', '#0080FF', '#4040FF', 
+                                                        '#8000FF', '#C000FF', '#FF00C0', '#FF0060', '#FF4060', '#FF8060'
+                                                ];
+                                                return (
+                                                        <span
+                                                                key={index}
+                                                                style={{
+                                                                        color: colors[index % colors.length],
+                                                                        filter: `hue-rotate(${index * 20}deg) saturate(1.5) contrast(1.2)`,
+                                                                        background: `linear-gradient(45deg, ${colors[index % colors.length]}22, transparent)`,
+                                                                        WebkitBackgroundClip: 'text',
+                                                                        backgroundClip: 'text',
+                                                                        animation: `rainbow-cascade 8s ease-in-out infinite`,
+                                                                        animationDelay: `${index * 0.3}s`,
+                                                                        display: 'inline-block',
+                                                                        textShadow: `2px 2px 4px ${colors[index % colors.length]}44`,
+                                                                }}
+                                                        >
+                                                                {letter === ' ' ? '\u00A0' : letter}
+                                                        </span>
+                                                );
+                                        })}
+                                </div>
                                 <Typography.Text 
                                         style={{
                                                 color: '#FFA500',

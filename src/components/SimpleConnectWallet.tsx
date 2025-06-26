@@ -107,16 +107,16 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               wordSpacing: '0.05em'
             }}>
               {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
-                const spectrumColors = [
-                  '#FF6B6B', '#FF8E53', '#FF6B9D', '#C44569', '#F8B500', '#F0932B',
-                  '#EB4D4B', '#6C5CE7', '#A29BFE', '#74B9FF', '#0984E3', '#00B894',
-                  '#00CEC9', '#6C5CE7', '#A29BFE', '#FD79A8', '#E84393', '#00B894', '#FF7675'
+                const degenColors = [
+                  '#FF1744', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3',
+                  '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B',
+                  '#FF9800', '#FF5722', '#795548', '#607D8B', '#F44336', '#E91E63', '#9C27B0'
                 ];
                 return (
                   <span
                     key={index}
                     style={{
-                      color: spectrumColors[index % spectrumColors.length],
+                      color: degenColors[index % degenColors.length],
                       display: 'inline-block',
                       fontWeight: '900',
                       textTransform: 'uppercase',

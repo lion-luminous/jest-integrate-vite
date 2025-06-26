@@ -196,23 +196,25 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
             boxShadow: '0 0 10px rgba(139, 92, 246, 0.2)'
           }} />
 
-          {/* Ethereal Portal Button */}
+          {/* Cyberpunk Google Login Button */}
           <Button
             type="primary"
             size="large"
             icon={<GoogleOutlined />}
             onClick={handleGoogleSignIn}
-            className="w-full text-lg font-bold rounded-xl border-0 transition-all duration-300 hover:opacity-90"
+            className="w-full text-lg font-bold rounded-xl border-0 transition-all duration-300 hover:opacity-90 hover:scale-105"
             style={{
               height: '64px',
-              background: '#2a2a2a',
-              color: '#FFD700',
-              textShadow: '0 0 8px rgba(255, 215, 0, 0.6)',
-              border: '2px solid rgba(255, 215, 0, 0.8)',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)'
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+              color: '#06B6D4',
+              textShadow: '0 0 10px rgba(6, 182, 212, 0.8)',
+              border: '2px solid rgba(6, 182, 212, 0.6)',
+              boxShadow: '0 0 25px rgba(6, 182, 212, 0.4), inset 0 0 25px rgba(6, 182, 212, 0.1)',
+              transform: 'perspective(1px) translateZ(0)',
+              backfaceVisibility: 'hidden'
             }}
           >
-            ◉ ENTER THE VOID ◉
+            🚀 SIGN IN WITH GOOGLE 🚀
           </Button>
 
           {/* Ethereal Status */}

@@ -33,21 +33,20 @@ const Todo = () => {
                                         wordSpacing: '0.05em'
                                 }}>
                                         {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
-                                                const degenColors = [
-                                                        '#FF0040', '#FF4000', '#FF8000', '#FFBF00', '#FFFF00', '#BFFF00', 
-                                                        '#80FF00', '#40FF00', '#00FF40', '#00FF80', '#00FFBF', '#00FFFF', '#00BFFF',
-                                                        '#0080FF', '#0040FF', '#4000FF', '#8000FF', '#BF00FF', '#FF00BF'
+                                                const spectrumColors = [
+                                                        '#FF6B6B', '#FF8E53', '#FF6B9D', '#C44569', '#F8B500', '#F0932B',
+                                                        '#EB4D4B', '#6C5CE7', '#A29BFE', '#74B9FF', '#0984E3', '#00B894',
+                                                        '#00CEC9', '#6C5CE7', '#A29BFE', '#FD79A8', '#E84393', '#00B894', '#FF7675'
                                                 ];
                                                 return (
                                                         <span
                                                                 key={index}
                                                                 style={{
-                                                                        color: degenColors[index % degenColors.length],
+                                                                        color: spectrumColors[index % spectrumColors.length],
                                                                         display: 'inline-block',
                                                                         fontWeight: '900',
                                                                         textTransform: 'uppercase',
-                                                                        fontFamily: 'Orbitron, monospace',
-                                                                        transition: 'color 0.3s ease'
+                                                                        fontFamily: 'Orbitron, monospace'
                                                                 }}
                                                         >
                                                                 {letter === ' ' ? '\u00A0' : letter}

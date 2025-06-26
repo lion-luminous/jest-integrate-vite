@@ -57,8 +57,8 @@ const AddTask = () => {
                                         ref={inputRef}
                                         style={{
                                                 background: '#1a1a1a',
-                                                border: '1px solid rgba(255, 215, 0, 0.5)',
-                                                color: '#FFD700'
+                                                border: '1px solid rgba(6, 182, 212, 0.5)',
+                                                color: '#06B6D4'
                                         }}
                                 />
                         </Form.Item>
@@ -76,8 +76,8 @@ const AddTask = () => {
                                         placeholder='Your task...' 
                                         style={{
                                                 background: '#1a1a1a',
-                                                border: '1px solid rgba(255, 215, 0, 0.5)',
-                                                color: '#FFD700'
+                                                border: '1px solid rgba(139, 92, 246, 0.5)',
+                                                color: '#8B5CF6'
                                         }}
                                 />
                         </Form.Item>
@@ -88,8 +88,8 @@ const AddTask = () => {
                                         icon={<PlusCircleOutlined />}
                                         style={{
                                                 background: '#2a2a2a',
-                                                color: '#FFD700',
-                                                border: '2px solid rgba(255, 215, 0, 0.8)',
+                                                color: '#EC4899',
+                                                border: '2px solid rgba(236, 72, 153, 0.8)',
                                                 fontWeight: '600'
                                         }}
                                 >

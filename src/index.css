@@ -28,11 +28,11 @@
 
 /* Input placeholder styling */
 .ant-input::placeholder {
-  color: rgba(255, 215, 0, 0.5) !important;
+  color: rgba(139, 92, 246, 0.5) !important;
 }
 
 .ant-modal .ant-input::placeholder {
-  color: rgba(255, 215, 0, 0.5) !important;
+  color: rgba(139, 92, 246, 0.5) !important;
 }
 
 /* Form validation message styling */
@@ -52,32 +52,32 @@
 /* Pagination styling */
 .ant-pagination .ant-pagination-item {
   background: rgba(42, 42, 42, 0.9) !important;
-  border: 1px solid rgba(255, 215, 0, 0.5) !important;
+  border: 1px solid rgba(139, 92, 246, 0.5) !important;
 }
 
 .ant-pagination .ant-pagination-item a {
-  color: #FFD700 !important;
+  color: #8B5CF6 !important;
 }
 
 .ant-pagination .ant-pagination-item-active {
-  background: rgba(255, 215, 0, 0.2) !important;
-  border-color: #FFD700 !important;
+  background: rgba(139, 92, 246, 0.2) !important;
+  border-color: #8B5CF6 !important;
 }
 
 .ant-pagination .ant-pagination-item-active a {
-  color: #FFD700 !important;
+  color: #8B5CF6 !important;
 }
 
 /* Filter dropdown styling */
 .ant-dropdown .ant-dropdown-menu {
   background: rgba(42, 42, 42, 0.95) !important;
-  border: 1px solid rgba(255, 215, 0, 0.6) !important;
+  border: 1px solid rgba(6, 182, 212, 0.6) !important;
 }
 
 .ant-dropdown .ant-dropdown-menu-item {
-  color: #FFD700 !important;
+  color: #06B6D4 !important;
 }
 
 .ant-dropdown .ant-dropdown-menu-item:hover {
-  background: rgba(255, 215, 0, 0.1) !important;
+  background: rgba(6, 182, 212, 0.1) !important;
 }

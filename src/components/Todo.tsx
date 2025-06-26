@@ -11,7 +11,7 @@ const CascadingText: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setAnimationPhase(prev => (prev + 0.1) % 6);
-    }, 600);
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 

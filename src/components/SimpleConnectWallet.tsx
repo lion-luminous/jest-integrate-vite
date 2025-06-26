@@ -14,7 +14,7 @@ const CascadingText: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setAnimationPhase(prev => (prev + 0.1) % 6);
-    }, 600);
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 
@@ -134,8 +134,9 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
         <div className="text-center p-8">
           {/* Animated Header */}
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-28 h-28 rounded-full mb-6 animate-bounce"
+            <div className="inline-flex items-center justify-center w-28 h-28 rounded-full mb-6"
                  style={{ 
+                   animation: 'bounce 3s infinite',
                    background: 'linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335)',
                    boxShadow: '0 0 40px rgba(66, 133, 244, 0.8), 0 0 80px rgba(52, 168, 83, 0.6)',
                    border: '2px solid rgba(66, 133, 244, 0.9)'

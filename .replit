@@ -25,5 +25,5 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "node http-server.js"
+args = "node fast-deploy.js"
 waitForPort = 5000

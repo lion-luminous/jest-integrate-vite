@@ -70,12 +70,10 @@ const server = http.createServer((req, res) => {
               border: 2px solid #00ffff;
               border-radius: 15px;
               background: rgba(0, 255, 255, 0.1);
-              box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
             }
             h1 { 
               color: #ffd700; 
               font-size: 2.5em;
-              text-shadow: 0 0 10px #ffd700;
               margin-bottom: 20px;
             }
             .status { 

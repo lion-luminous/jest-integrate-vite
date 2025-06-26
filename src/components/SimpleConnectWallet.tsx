@@ -19,110 +19,120 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
   return (
     <div className="min-h-screen flex items-center justify-center p-4" 
          style={{ 
-           background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%)',
+           background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #000814 75%, #001d3d 100%)',
            position: 'relative'
          }}>
       
-      {/* Animated ethereal background elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-violet-400 rounded-full mix-blend-screen filter blur-xl animate-pulse"></div>
-        <div className="absolute top-20 right-20 w-80 h-80 bg-cyan-300 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-fuchsia-400 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-2000"></div>
-        <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-emerald-300 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-3000"></div>
+      {/* High contrast ethereal background elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 left-10 w-96 h-96 bg-yellow-400 rounded-full mix-blend-screen filter blur-xl animate-pulse"></div>
+        <div className="absolute top-20 right-20 w-80 h-80 bg-amber-300 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-orange-400 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-2000"></div>
+        <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-yellow-300 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-3000"></div>
       </div>
       
-      {/* Floating particles */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-violet-300 rounded-full animate-bounce delay-500"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-200 rounded-full animate-bounce delay-1500"></div>
-        <div className="absolute bottom-1/4 left-2/3 w-1.5 h-1.5 bg-fuchsia-300 rounded-full animate-bounce delay-2500"></div>
-        <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-emerald-200 rounded-full animate-bounce delay-3500"></div>
+      {/* Floating golden particles */}
+      <div className="absolute inset-0 opacity-60">
+        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-yellow-400 rounded-full animate-bounce delay-500 shadow-lg"></div>
+        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-amber-300 rounded-full animate-bounce delay-1500 shadow-lg"></div>
+        <div className="absolute bottom-1/4 left-2/3 w-2.5 h-2.5 bg-orange-400 rounded-full animate-bounce delay-2500 shadow-lg"></div>
+        <div className="absolute top-2/3 right-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-bounce delay-3500 shadow-lg"></div>
       </div>
       
       <Card 
         className="w-full max-w-md relative z-10"
         style={{ 
-          background: 'rgba(15, 15, 35, 0.85)',
+          background: 'rgba(0, 0, 0, 0.95)',
           backdropFilter: 'blur(20px)',
           borderRadius: '24px',
-          border: '2px solid rgba(139, 92, 246, 0.3)',
-          boxShadow: '0 25px 50px -12px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+          border: '3px solid rgba(255, 215, 0, 0.8)',
+          boxShadow: '0 25px 50px -12px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.4)'
         }}
       >
         <div className="text-center p-8">
           {/* Animated Header */}
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-6 animate-bounce"
+            <div className="inline-flex items-center justify-center w-28 h-28 rounded-full mb-6 animate-bounce"
                  style={{ 
-                   background: 'linear-gradient(135deg, #8B5CF6, #06B6D4, #10B981, #F59E0B, #EF4444, #EC4899)',
-                   boxShadow: '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(6, 182, 212, 0.4)'
+                   background: 'linear-gradient(135deg, #FFD700, #FFA500, #FF8C00, #DAA520)',
+                   boxShadow: '0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 165, 0, 0.6)',
+                   border: '2px solid rgba(255, 215, 0, 0.9)'
                  }}>
-              <WalletOutlined style={{ fontSize: '36px', color: 'white', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.5))' }} />
+              <WalletOutlined style={{ 
+                fontSize: '40px', 
+                color: '#000000', 
+                filter: 'drop-shadow(0 0 5px rgba(0,0,0,0.8))',
+                fontWeight: 'bold'
+              }} />
             </div>
             <Title level={1} className="mb-2"
                    style={{ 
-                     background: 'linear-gradient(135deg, #8B5CF6, #06B6D4, #10B981, #F59E0B)',
-                     WebkitBackgroundClip: 'text',
-                     WebkitTextFillColor: 'transparent',
+                     color: '#FFD700',
                      fontWeight: 'bold',
-                     textShadow: '0 0 20px rgba(139, 92, 246, 0.5)',
-                     fontSize: '2.5rem'
+                     textShadow: '0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6)',
+                     fontSize: '3rem',
+                     letterSpacing: '2px'
                    }}>
-              Ethereal Degenerate
+              ETHEREAL DEGENERATE
             </Title>
-            <Text className="text-lg" style={{ 
-              color: '#06B6D4', 
-              textShadow: '0 0 10px rgba(6, 182, 212, 0.7)',
-              fontWeight: '600'
+            <Text className="text-xl" style={{ 
+              color: '#FFFFFF', 
+              textShadow: '0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4)',
+              fontWeight: '700',
+              letterSpacing: '1px'
             }}>
-              Cyber Portal Active
+              ⚡ CYBER PORTAL ACTIVE ⚡
             </Text>
             <br />
-            <Text className="text-sm" style={{ 
-              color: '#10B981',
-              textShadow: '0 0 8px rgba(16, 185, 129, 0.6)'
+            <Text className="text-lg" style={{ 
+              color: '#FFA500',
+              textShadow: '0 0 12px rgba(255, 165, 0, 0.8)',
+              fontWeight: '600',
+              marginTop: '8px'
             }}>
-              Reality Bridge Deployed
+              🔥 REALITY BRIDGE DEPLOYED 🔥
             </Text>
           </div>
 
-          {/* Ethereal Features Grid */}
+          {/* High Contrast Golden Features Grid */}
           <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="p-4 rounded-xl border" 
+            <div className="p-5 rounded-xl border" 
                  style={{ 
-                   background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15))',
-                   border: '1px solid rgba(139, 92, 246, 0.3)',
-                   boxShadow: '0 0 20px rgba(139, 92, 246, 0.2)'
+                   background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1))',
+                   border: '2px solid rgba(255, 215, 0, 0.6)',
+                   boxShadow: '0 0 25px rgba(255, 215, 0, 0.4)'
                  }}>
               <FireOutlined style={{ 
-                fontSize: '28px', 
-                color: '#8B5CF6', 
-                marginBottom: '8px',
-                filter: 'drop-shadow(0 0 10px rgba(139, 92, 246, 0.7))'
+                fontSize: '32px', 
+                color: '#FFD700', 
+                marginBottom: '12px',
+                filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))'
               }} />
-              <Text className="text-xs block" style={{ 
-                color: '#06B6D4',
-                textShadow: '0 0 5px rgba(6, 182, 212, 0.5)',
-                fontWeight: '500'
-              }}>Neural Authentication</Text>
+              <Text className="text-sm block" style={{ 
+                color: '#FFFFFF',
+                textShadow: '0 0 8px rgba(255, 215, 0, 0.6)',
+                fontWeight: '700',
+                letterSpacing: '0.5px'
+              }}>NEURAL AUTHENTICATION</Text>
             </div>
-            <div className="p-4 rounded-xl border"
+            <div className="p-5 rounded-xl border"
                  style={{ 
-                   background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(245, 158, 11, 0.15))',
-                   border: '1px solid rgba(16, 185, 129, 0.3)',
-                   boxShadow: '0 0 20px rgba(16, 185, 129, 0.2)'
+                   background: 'linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(218, 165, 32, 0.1))',
+                   border: '2px solid rgba(255, 165, 0, 0.6)',
+                   boxShadow: '0 0 25px rgba(255, 165, 0, 0.4)'
                  }}>
               <RocketOutlined style={{ 
-                fontSize: '28px', 
-                color: '#10B981', 
-                marginBottom: '8px',
-                filter: 'drop-shadow(0 0 10px rgba(16, 185, 129, 0.7))'
+                fontSize: '32px', 
+                color: '#FFA500', 
+                marginBottom: '12px',
+                filter: 'drop-shadow(0 0 8px rgba(255, 165, 0, 0.8))'
               }} />
-              <Text className="text-xs block" style={{ 
-                color: '#F59E0B',
-                textShadow: '0 0 5px rgba(245, 158, 11, 0.5)',
-                fontWeight: '500'
-              }}>Quantum Database</Text>
+              <Text className="text-sm block" style={{ 
+                color: '#FFFFFF',
+                textShadow: '0 0 8px rgba(255, 165, 0, 0.6)',
+                fontWeight: '700',
+                letterSpacing: '0.5px'
+              }}>QUANTUM DATABASE</Text>
             </div>
           </div>
 
@@ -190,18 +200,16 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
           <Button
             type="primary"
             size="large"
-            icon={<GoogleOutlined style={{ filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.8))' }} />}
+            icon={<GoogleOutlined />}
             onClick={handleGoogleSignIn}
-            className="w-full text-lg font-bold rounded-xl border-0 transition-all duration-500 hover:scale-105"
+            className="w-full text-lg font-bold rounded-xl border-0 transition-all duration-300 hover:opacity-90"
             style={{
               height: '64px',
-              background: 'linear-gradient(135deg, #8B5CF6, #06B6D4, #10B981, #F59E0B, #EF4444, #EC4899)',
-              backgroundSize: '400% 400%',
-              animation: 'etherealShift 4s ease infinite',
-              boxShadow: '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-              color: 'white',
-              textShadow: '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(139, 92, 246, 0.6)',
-              border: '2px solid rgba(255, 255, 255, 0.2)'
+              background: '#2a2a2a',
+              color: '#FFD700',
+              textShadow: '0 0 8px rgba(255, 215, 0, 0.6)',
+              border: '2px solid rgba(255, 215, 0, 0.8)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)'
             }}
           >
             ◉ ENTER THE VOID ◉
@@ -250,13 +258,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
         </div>
       </Card>
 
-      <style>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
+
     </div>
   );
 };

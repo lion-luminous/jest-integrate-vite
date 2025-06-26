@@ -129,8 +129,8 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
           background: 'rgba(0, 0, 0, 0.95)',
           backdropFilter: 'blur(20px)',
           borderRadius: '24px',
-          border: '3px solid rgba(255, 215, 0, 0.8)',
-          boxShadow: '0 25px 50px -12px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.4)'
+          border: '3px solid rgba(139, 92, 246, 0.8)',
+          boxShadow: '0 25px 50px -12px rgba(139, 92, 246, 0.6), inset 0 1px 0 rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.4)'
         }}
       >
         <div className="text-center p-8">
@@ -162,7 +162,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               <CascadingText />
             </div>
             <Text className="text-xl" style={{ 
-              color: '#FFD700', 
+              color: '#06B6D4', 
               fontWeight: '700',
               letterSpacing: '1px'
             }}>
@@ -170,7 +170,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
             </Text>
             <br />
             <Text className="text-lg" style={{ 
-              color: '#FFD700',
+              color: '#EC4899',
               fontWeight: '600',
               marginTop: '8px'
             }}>
@@ -290,8 +290,8 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
             style={{
               height: '64px',
               background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-              color: '#FFD700',
-              border: '2px solid rgba(255, 215, 0, 0.8)',
+              color: '#8B5CF6',
+              border: '2px solid rgba(139, 92, 246, 0.8)',
               boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
               transform: 'perspective(1px) translateZ(0)',
               backfaceVisibility: 'hidden',

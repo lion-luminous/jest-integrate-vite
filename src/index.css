@@ -7,13 +7,13 @@
 /* Custom table styling for dark theme */
 .custom-table .ant-table-thead > tr > th {
   background: rgba(42, 42, 42, 0.9) !important;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.6) !important;
-  color: #FFD700 !important;
+  border-bottom: 2px solid rgba(139, 92, 246, 0.6) !important;
+  color: #8B5CF6 !important;
 }
 
 .custom-table .ant-table-tbody > tr > td {
   background: rgba(26, 26, 26, 0.8) !important;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.3) !important;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.3) !important;
 }
 
 .custom-table .ant-table-tbody > tr:hover > td {

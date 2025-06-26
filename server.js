@@ -32,13 +32,29 @@ app.get('/api/status', (req, res) => {
   });
 });
 
-// Root endpoint
+// Root endpoint with simple HTML response
 app.get('/', (req, res) => {
   const indexFile = path.join(buildPath, 'index.html');
   if (fs.existsSync(indexFile)) {
     res.sendFile(indexFile);
   } else {
-    res.status(200).send('Google Login App - Server Running');
+    res.status(200).send(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Google Login App</title>
+          <style>
+            body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+            .status { color: #4CAF50; }
+          </style>
+        </head>
+        <body>
+          <h1>🚀 Google Login App</h1>
+          <p class="status">Server Running Successfully</p>
+          <p>Ready for deployment</p>
+        </body>
+      </html>
+    `);
   }
 });
 

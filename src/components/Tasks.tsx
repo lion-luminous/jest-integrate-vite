@@ -8,13 +8,13 @@ import EditTask from './Actions/EditTask'
 
 const columns: TableProps<ITask>['columns'] = [
         {
-                title: <span style={{ color: '#FFD700', fontWeight: '700' }}>ID</span>,
+                title: <span style={{ color: '#8B5CF6', fontWeight: '700' }}>ID</span>,
                 dataIndex: 'taskId',
                 key: 'taskId',
                 render: (id: string) => <span style={{ color: '#06B6D4' }}>{id.slice(-5)}</span>
         },
         {
-                title: <span style={{ color: '#FFD700', fontWeight: '700' }}>TASK</span>,
+                title: <span style={{ color: '#06B6D4', fontWeight: '700' }}>TASK</span>,
                 dataIndex: 'desc',
                 key: 'desc',
                 width: 300,
@@ -26,7 +26,7 @@ const columns: TableProps<ITask>['columns'] = [
                 )
         },
         {
-                title: <span style={{ color: '#FFD700', fontWeight: '700' }}>STATUS</span>,
+                title: <span style={{ color: '#EC4899', fontWeight: '700' }}>STATUS</span>,
                 key: 'status',
                 dataIndex: 'status',
                 render: (status: TaskStatus) => (
@@ -67,7 +67,7 @@ const columns: TableProps<ITask>['columns'] = [
                 }
         },
         {
-                title: <span style={{ color: '#FFD700', fontWeight: '700' }}>ACTIONS</span>,
+                title: <span style={{ color: '#10B981', fontWeight: '700' }}>ACTIONS</span>,
                 key: 'mark',
                 render: (_, record) => (
                         <Space size='middle'>

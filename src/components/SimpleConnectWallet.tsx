@@ -97,21 +97,30 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
                 fontWeight: 'bold'
               }} />
             </div>
-            <div className="mb-2" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', fontWeight: 'bold', letterSpacing: '2px', textAlign: 'center' }}>
-              {'ETHEREAL DEGEN'.split('').map((letter, index) => {
-                const cyberpunkColors = [
-                  '#00FFFF', '#FF00FF', '#00FFFF', '#FF00FF', '#00FFFF', '#FFFF00', '#00FFFF', '#FF00FF',
-                  '#00FFFF', '#FF00FF', '#00FFFF', '#FFFF00', '#00FFFF'
+            <div className="mb-2" style={{ 
+              fontSize: 'clamp(1.2rem, 4.5vw, 2.2rem)', 
+              fontWeight: '900', 
+              letterSpacing: 'clamp(0.5px, 0.3vw, 2px)', 
+              textAlign: 'center',
+              fontFamily: 'Orbitron, monospace',
+              lineHeight: '1.1',
+              wordSpacing: '0.05em'
+            }}>
+              {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
+                const degenColors = [
+                  '#FF0040', '#FF4000', '#FF8000', '#FFBF00', '#FFFF00', '#BFFF00', 
+                  '#80FF00', '#40FF00', '#00FF40', '#00FF80', '#00FFBF', '#00FFFF', '#00BFFF'
                 ];
                 return (
                   <span
                     key={index}
                     style={{
-                      color: cyberpunkColors[index % cyberpunkColors.length],
-                      textShadow: `0 0 10px ${cyberpunkColors[index % cyberpunkColors.length]}, 0 0 20px ${cyberpunkColors[index % cyberpunkColors.length]}40`,
+                      color: degenColors[index % degenColors.length],
                       display: 'inline-block',
                       fontWeight: '900',
-                      textTransform: 'uppercase'
+                      textTransform: 'uppercase',
+                      fontFamily: 'Orbitron, monospace',
+                      transition: 'color 0.3s ease'
                     }}
                   >
                     {letter === ' ' ? '\u00A0' : letter}

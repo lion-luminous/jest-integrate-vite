@@ -284,7 +284,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
             size="large"
             icon={<GoogleOutlined />}
             onClick={handleGoogleSignIn}
-            className="w-full text-lg font-bold rounded-xl border-0 transition-all duration-300 hover:opacity-90 hover:scale-105"
+            className="w-full font-bold rounded-xl border-0 transition-all duration-300 hover:opacity-90 hover:scale-105"
             style={{
               height: '64px',
               background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
@@ -292,10 +292,13 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               border: '2px solid rgba(255, 215, 0, 0.8)',
               boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
               transform: 'perspective(1px) translateZ(0)',
-              backfaceVisibility: 'hidden'
+              backfaceVisibility: 'hidden',
+              fontSize: 'clamp(12px, 3.5vw, 18px)',
+              padding: '0 8px'
             }}
           >
-            🚀 SIGN IN WITH GOOGLE 🚀
+            <span className="hidden sm:inline">🚀 SIGN IN WITH GOOGLE 🚀</span>
+            <span className="sm:hidden">🚀 GOOGLE SIGN IN 🚀</span>
           </Button>
 
           {/* Ethereal Status */}

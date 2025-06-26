@@ -22,8 +22,8 @@ const Todo = () => {
                                         padding: '40px'
                                 }}
                         >
-                                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', letterSpacing: '2px', textAlign: 'center', marginBottom: '8px' }}>
-                                        {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
+                                <div style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', fontWeight: 'bold', letterSpacing: '2px', textAlign: 'center', marginBottom: '8px' }}>
+                                        {'ETHEREAL DEGEN'.split('').map((letter, index) => {
                                                 const colors = [
                                                         '#FF0080', '#FF4080', '#FF8040', '#FFB020', '#FFE000', '#C0FF00', 
                                                         '#80FF40', '#40FF80', '#00FFB0', '#00E0FF', '#0080FF', '#4040FF', 

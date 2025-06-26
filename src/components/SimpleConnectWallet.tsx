@@ -54,11 +54,20 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
         <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-yellow-300 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-3000"></div>
       </div>
       
-      {/* Floating cyberpunk particles */}
-      <div className="absolute inset-0 opacity-70">
-        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-cyan-400 rounded-full animate-bounce delay-500 shadow-lg"></div>
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-1500 shadow-lg"></div>
-        <div className="absolute bottom-1/4 left-2/3 w-2.5 h-2.5 bg-pink-400 rounded-full animate-bounce delay-2500 shadow-lg"></div>
+      {/* Dancing floating orbs */}
+      <div className="absolute inset-0 opacity-80">
+        <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-cyan-400 rounded-full animate-bounce delay-500 shadow-lg floating-orb-1"></div>
+        <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-purple-400 rounded-full animate-bounce delay-1500 shadow-lg floating-orb-2"></div>
+        <div className="absolute bottom-1/4 left-2/3 w-3.5 h-3.5 bg-pink-400 rounded-full animate-bounce delay-2500 shadow-lg floating-orb-3"></div>
+        <div className="absolute top-1/5 left-3/4 w-2.5 h-2.5 bg-green-400 rounded-full animate-bounce delay-700 shadow-lg floating-orb-4"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-yellow-400 rounded-full animate-bounce delay-1200 shadow-lg floating-orb-5"></div>
+        <div className="absolute top-2/3 left-1/5 w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-1800 shadow-lg floating-orb-6"></div>
+        <div className="absolute bottom-1/5 right-2/3 w-3.5 h-3.5 bg-red-400 rounded-full animate-bounce delay-300 shadow-lg floating-orb-7"></div>
+        <div className="absolute top-1/6 right-1/5 w-2.5 h-2.5 bg-indigo-400 rounded-full animate-bounce delay-2000 shadow-lg floating-orb-8"></div>
+        <div className="absolute bottom-2/3 left-1/3 w-3 h-3 bg-orange-400 rounded-full animate-bounce delay-900 shadow-lg floating-orb-9"></div>
+        <div className="absolute top-3/4 right-1/2 w-2 h-2 bg-teal-400 rounded-full animate-bounce delay-1600 shadow-lg floating-orb-10"></div>
+        <div className="absolute bottom-1/6 left-1/2 w-4 h-4 bg-lime-400 rounded-full animate-bounce delay-2200 shadow-lg floating-orb-11"></div>
+        <div className="absolute top-1/2 left-1/6 w-2.5 h-2.5 bg-violet-400 rounded-full animate-bounce delay-1100 shadow-lg floating-orb-12"></div>
         <div className="absolute top-2/3 right-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-bounce delay-3500 shadow-lg"></div>
       </div>
       
@@ -88,8 +97,8 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
                 fontWeight: 'bold'
               }} />
             </div>
-            <div className="mb-2" style={{ fontSize: '3rem', fontWeight: 'bold', letterSpacing: '2px', textAlign: 'center' }}>
-              {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
+            <div className="mb-2" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', fontWeight: 'bold', letterSpacing: '2px', textAlign: 'center' }}>
+              {'ETHEREAL DEGEN'.split('').map((letter, index) => {
                 const colors = [
                   '#FF0080', '#FF4080', '#FF8040', '#FFB020', '#FFE000', '#C0FF00', 
                   '#80FF40', '#40FF80', '#00FFB0', '#00E0FF', '#0080FF', '#4040FF', 

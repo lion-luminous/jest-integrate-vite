@@ -89,6 +89,97 @@
   }
 }
 
+/* Dancing floating orbs animations */
+.floating-orb-1 { animation: dance1 4s ease-in-out infinite; }
+.floating-orb-2 { animation: dance2 5s ease-in-out infinite; }
+.floating-orb-3 { animation: dance3 3.5s ease-in-out infinite; }
+.floating-orb-4 { animation: dance4 4.5s ease-in-out infinite; }
+.floating-orb-5 { animation: dance5 3s ease-in-out infinite; }
+.floating-orb-6 { animation: dance6 5.5s ease-in-out infinite; }
+.floating-orb-7 { animation: dance7 4.2s ease-in-out infinite; }
+.floating-orb-8 { animation: dance8 3.8s ease-in-out infinite; }
+.floating-orb-9 { animation: dance9 4.8s ease-in-out infinite; }
+.floating-orb-10 { animation: dance10 3.2s ease-in-out infinite; }
+.floating-orb-11 { animation: dance11 5.2s ease-in-out infinite; }
+.floating-orb-12 { animation: dance12 4.4s ease-in-out infinite; }
+
+@keyframes dance1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(15px, -20px) rotate(90deg) scale(1.2); }
+  50% { transform: translate(-10px, -15px) rotate(180deg) scale(0.8); }
+  75% { transform: translate(-20px, 10px) rotate(270deg) scale(1.1); }
+}
+
+@keyframes dance2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  30% { transform: translate(-25px, 15px) rotate(120deg) scale(1.3); }
+  60% { transform: translate(20px, -10px) rotate(240deg) scale(0.9); }
+}
+
+@keyframes dance3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  20% { transform: translate(10px, -25px) rotate(72deg) scale(1.1); }
+  40% { transform: translate(-15px, -5px) rotate(144deg) scale(1.4); }
+  60% { transform: translate(5px, 20px) rotate(216deg) scale(0.7); }
+  80% { transform: translate(-10px, -10px) rotate(288deg) scale(1.2); }
+}
+
+@keyframes dance4 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(20px, 20px) rotate(150deg) scale(0.8); }
+  66% { transform: translate(-15px, -20px) rotate(300deg) scale(1.3); }
+}
+
+@keyframes dance5 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  50% { transform: translate(-30px, 25px) rotate(180deg) scale(1.5); }
+}
+
+@keyframes dance6 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(25px, -5px) rotate(60deg) scale(1.2); }
+  50% { transform: translate(5px, -30px) rotate(120deg) scale(0.6); }
+  75% { transform: translate(-20px, 15px) rotate(180deg) scale(1.4); }
+}
+
+@keyframes dance7 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  40% { transform: translate(-10px, -25px) rotate(200deg) scale(1.1); }
+  80% { transform: translate(30px, 10px) rotate(400deg) scale(0.9); }
+}
+
+@keyframes dance8 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  20% { transform: translate(15px, 15px) rotate(45deg) scale(1.3); }
+  40% { transform: translate(-20px, 5px) rotate(90deg) scale(0.8); }
+  60% { transform: translate(10px, -20px) rotate(135deg) scale(1.1); }
+  80% { transform: translate(-5px, -10px) rotate(180deg) scale(1.2); }
+}
+
+@keyframes dance9 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(-25px, -15px) rotate(110deg) scale(1.4); }
+  66% { transform: translate(15px, 25px) rotate(220deg) scale(0.7); }
+}
+
+@keyframes dance10 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  50% { transform: translate(20px, -30px) rotate(360deg) scale(1.6); }
+}
+
+@keyframes dance11 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(-30px, 20px) rotate(80deg) scale(0.9); }
+  50% { transform: translate(25px, 25px) rotate(160deg) scale(1.3); }
+  75% { transform: translate(-15px, -25px) rotate(240deg) scale(1.1); }
+}
+
+@keyframes dance12 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  30% { transform: translate(10px, -15px) rotate(130deg) scale(1.2); }
+  70% { transform: translate(-25px, 10px) rotate(260deg) scale(0.8); }
+}
+
 .ant-pagination .ant-pagination-item-active a {
   color: #8B5CF6 !important;
 }

@@ -1,8 +1,54 @@
+import React, { useState, useEffect } from 'react'
 import { Divider, Flex, Typography } from 'antd'
 
 import AddTask from './AddTask'
 import Tasks from './Tasks'
 import UpdateModal from './UpdateModal'
+
+const DegenerateWaterfall: React.FC = () => {
+  const [animationPhase, setAnimationPhase] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimationPhase(prev => (prev + 0.1) % 6);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span>
+      {'DEGENERATE'.split('').map((letter, index) => {
+        const phase = (animationPhase + index * 0.4) % 6;
+        let color;
+        
+        if (phase < 1) color = `hsl(${320 + phase * 40}, 100%, 65%)`;
+        else if (phase < 2) color = `hsl(${360 + (phase - 1) * 60}, 100%, 65%)`;
+        else if (phase < 3) color = `hsl(${60 + (phase - 2) * 60}, 100%, 65%)`;
+        else if (phase < 4) color = `hsl(${120 + (phase - 3) * 60}, 100%, 65%)`;
+        else if (phase < 5) color = `hsl(${180 + (phase - 4) * 60}, 100%, 65%)`;
+        else color = `hsl(${240 + (phase - 5) * 80}, 100%, 65%)`;
+
+        return (
+          <span
+            key={index}
+            style={{
+              color: color,
+              display: 'inline-block',
+              fontWeight: '900',
+              textTransform: 'uppercase',
+              fontFamily: 'Orbitron, monospace',
+              transition: 'color 0.3s ease-in-out',
+              filter: `drop-shadow(0 0 4px ${color})`,
+              textShadow: `0 0 8px ${color}`
+            }}
+          >
+            {letter}
+          </span>
+        );
+      })}
+    </span>
+  );
+};
 
 const Todo = () => {
         return (

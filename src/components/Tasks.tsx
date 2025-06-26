@@ -11,7 +11,7 @@ const columns: TableProps<ITask>['columns'] = [
                 title: <span style={{ color: '#FFD700', fontWeight: '700' }}>ID</span>,
                 dataIndex: 'taskId',
                 key: 'taskId',
-                render: (id: string) => <span style={{ color: '#FFD700' }}>{id.slice(-5)}</span>
+                render: (id: string) => <span style={{ color: '#06B6D4' }}>{id.slice(-5)}</span>
         },
         {
                 title: <span style={{ color: '#FFD700', fontWeight: '700' }}>TASK</span>,
@@ -20,8 +20,8 @@ const columns: TableProps<ITask>['columns'] = [
                 width: 300,
                 render: (desc: string, record: ITask) => (
                         <Space direction='vertical'>
-                                <h4 className='font-bold text-lg' style={{ color: '#FFD700', margin: 0 }}>{record.title}</h4>
-                                <p style={{ color: '#FFA500', margin: 0 }}>{desc}</p>
+                                <h4 className='font-bold text-lg' style={{ color: '#8B5CF6', margin: 0 }}>{record.title}</h4>
+                                <p style={{ color: '#06B6D4', margin: 0 }}>{desc}</p>
                         </Space>
                 )
         },
@@ -32,9 +32,9 @@ const columns: TableProps<ITask>['columns'] = [
                 render: (status: TaskStatus) => (
                         <Tag
                                 style={{
-                                        background: status === 'COMPLETED' ? '#2a2a2a' : status === 'NOT_COMPLETED' ? '#4a1a1a' : '#3a3a1a',
-                                        color: status === 'COMPLETED' ? '#00FF00' : status === 'NOT_COMPLETED' ? '#FF6B6B' : '#FFD700',
-                                        border: `1px solid ${status === 'COMPLETED' ? '#00FF00' : status === 'NOT_COMPLETED' ? '#FF6B6B' : '#FFD700'}`,
+                                        background: status === 'COMPLETED' ? '#1a2a3a' : status === 'NOT_COMPLETED' ? '#3a1a2a' : '#2a1a3a',
+                                        color: status === 'COMPLETED' ? '#10B981' : status === 'NOT_COMPLETED' ? '#EF4444' : '#EC4899',
+                                        border: `1px solid ${status === 'COMPLETED' ? '#10B981' : status === 'NOT_COMPLETED' ? '#EF4444' : '#EC4899'}`,
                                         fontWeight: '600'
                                 }}
                         >

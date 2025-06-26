@@ -42,7 +42,7 @@ const AddTask = () => {
                         }}
                 >
                         <Form.Item
-                                label={<span style={{ color: '#FFD700', fontWeight: '600' }}>Title</span>}
+                                label={<span style={{ color: '#06B6D4', fontWeight: '600' }}>Title</span>}
                                 name='title'
                                 rules={[
                                         {
@@ -63,7 +63,7 @@ const AddTask = () => {
                                 />
                         </Form.Item>
                         <Form.Item
-                                label={<span style={{ color: '#FFD700', fontWeight: '600' }}>Description</span>}
+                                label={<span style={{ color: '#8B5CF6', fontWeight: '600' }}>Description</span>}
                                 name='desc'
                                 rules={[
                                         {

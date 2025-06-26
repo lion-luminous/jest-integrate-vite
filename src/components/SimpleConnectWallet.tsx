@@ -23,19 +23,19 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
            position: 'relative'
          }}>
       
-      {/* High contrast ethereal background elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-yellow-400 rounded-full mix-blend-screen filter blur-xl animate-pulse"></div>
-        <div className="absolute top-20 right-20 w-80 h-80 bg-amber-300 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-orange-400 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-2000"></div>
+      {/* Cyberpunk ethereal background elements */}
+      <div className="absolute inset-0 opacity-25">
+        <div className="absolute top-10 left-10 w-96 h-96 bg-cyan-400 rounded-full mix-blend-screen filter blur-xl animate-pulse"></div>
+        <div className="absolute top-20 right-20 w-80 h-80 bg-purple-400 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-pink-400 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-2000"></div>
         <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-yellow-300 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-3000"></div>
       </div>
       
-      {/* Floating golden particles */}
-      <div className="absolute inset-0 opacity-60">
-        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-yellow-400 rounded-full animate-bounce delay-500 shadow-lg"></div>
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-amber-300 rounded-full animate-bounce delay-1500 shadow-lg"></div>
-        <div className="absolute bottom-1/4 left-2/3 w-2.5 h-2.5 bg-orange-400 rounded-full animate-bounce delay-2500 shadow-lg"></div>
+      {/* Floating cyberpunk particles */}
+      <div className="absolute inset-0 opacity-70">
+        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-cyan-400 rounded-full animate-bounce delay-500 shadow-lg"></div>
+        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-1500 shadow-lg"></div>
+        <div className="absolute bottom-1/4 left-2/3 w-2.5 h-2.5 bg-pink-400 rounded-full animate-bounce delay-2500 shadow-lg"></div>
         <div className="absolute top-2/3 right-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-bounce delay-3500 shadow-lg"></div>
       </div>
       
@@ -94,42 +94,42 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
             </Text>
           </div>
 
-          {/* High Contrast Golden Features Grid */}
+          {/* Cyberpunk Features Grid */}
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div className="p-5 rounded-xl border" 
                  style={{ 
-                   background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1))',
-                   border: '2px solid rgba(255, 215, 0, 0.6)',
-                   boxShadow: '0 0 25px rgba(255, 215, 0, 0.4)'
+                   background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15))',
+                   border: '2px solid rgba(6, 182, 212, 0.7)',
+                   boxShadow: '0 0 25px rgba(6, 182, 212, 0.5)'
                  }}>
               <FireOutlined style={{ 
                 fontSize: '32px', 
-                color: '#FFD700', 
+                color: '#06B6D4', 
                 marginBottom: '12px',
-                filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))'
+                filter: 'drop-shadow(0 0 8px rgba(6, 182, 212, 0.8))'
               }} />
               <Text className="text-sm block" style={{ 
-                color: '#FFD700',
-                textShadow: '0 0 8px rgba(255, 215, 0, 0.6)',
+                color: '#06B6D4',
+                textShadow: '0 0 8px rgba(6, 182, 212, 0.6)',
                 fontWeight: '700',
                 letterSpacing: '0.5px'
               }}>NEURAL AUTHENTICATION</Text>
             </div>
             <div className="p-5 rounded-xl border"
                  style={{ 
-                   background: 'linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(218, 165, 32, 0.1))',
-                   border: '2px solid rgba(255, 165, 0, 0.6)',
-                   boxShadow: '0 0 25px rgba(255, 165, 0, 0.4)'
+                   background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15))',
+                   border: '2px solid rgba(139, 92, 246, 0.7)',
+                   boxShadow: '0 0 25px rgba(139, 92, 246, 0.5)'
                  }}>
               <RocketOutlined style={{ 
                 fontSize: '32px', 
-                color: '#FFA500', 
+                color: '#8B5CF6', 
                 marginBottom: '12px',
-                filter: 'drop-shadow(0 0 8px rgba(255, 165, 0, 0.8))'
+                filter: 'drop-shadow(0 0 8px rgba(139, 92, 246, 0.8))'
               }} />
               <Text className="text-sm block" style={{ 
-                color: '#FFD700',
-                textShadow: '0 0 8px rgba(255, 165, 0, 0.6)',
+                color: '#EC4899',
+                textShadow: '0 0 8px rgba(236, 72, 153, 0.6)',
                 fontWeight: '700',
                 letterSpacing: '0.5px'
               }}>QUANTUM DATABASE</Text>

@@ -297,8 +297,16 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               padding: '0 8px'
             }}
           >
-            <span className="hidden sm:inline">🚀 SIGN IN WITH GOOGLE 🚀</span>
-            <span className="sm:hidden">🚀 GOOGLE SIGN IN 🚀</span>
+            <span style={{
+              background: 'linear-gradient(90deg, #06B6D4, #8B5CF6, #EC4899)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: '900',
+              letterSpacing: '2px'
+            }}>
+              GOOGLING
+            </span>
           </Button>
 
           {/* Ethereal Status */}

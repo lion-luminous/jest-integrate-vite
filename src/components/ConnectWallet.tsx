@@ -84,7 +84,16 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({ onGoogleSignIn }) => {
               backgroundSize: '300% 300%'
             }}
           >
-            Connect with Google
+            <span style={{
+              background: 'linear-gradient(90deg, #06B6D4, #8B5CF6, #EC4899)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: '900',
+              letterSpacing: '2px'
+            }}>
+              GOOGLING
+            </span>
           </Button>
 
           {/* Status Info */}

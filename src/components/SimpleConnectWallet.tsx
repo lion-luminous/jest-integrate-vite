@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Card, Typography, Space, Divider, message } from 'antd';
 import { GoogleOutlined, FireOutlined, RocketOutlined } from '@ant-design/icons';
+import { useAuth } from './AuthProvider';
 
 const { Title, Text } = Typography;
 
-interface SimpleConnectWalletProps {
-  onConnect: () => void;
-}
+interface SimpleConnectWalletProps {}
 
 const CascadingText: React.FC = () => {
   const [animationPhase, setAnimationPhase] = useState(0);
@@ -58,27 +57,21 @@ const CascadingText: React.FC = () => {
   );
 };
 
-const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) => {
+const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = () => {
+  const { signInWithGoogle } = useAuth();
+  
   const handleGoogleSignIn = async () => {
     try {
-      const { signInWithPopup, GoogleAuthProvider } = await import('firebase/auth');
-      const { auth } = await import('../firebase/config');
+      message.loading('Connecting to neural bridge...', 0.5);
+      await signInWithGoogle();
+      message.success('Authentication successful! Entering cyber realm...');
       
-      const provider = new GoogleAuthProvider();
-      provider.setCustomParameters({
-        prompt: 'select_account'
-      });
-      
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      
-      message.success(`Welcome ${user.displayName || user.email}! Loading Todo App...`);
-      onConnect();
+      // Firebase auth state change will automatically redirect to Todo app
     } catch (error: any) {
       console.error('Authentication error:', error);
       
       if (error.code === 'auth/popup-closed-by-user') {
-        message.info('Sign-in cancelled');
+        message.info('Neural bridge connection cancelled');
       } else if (error.code === 'auth/configuration-not-found' || error.code === 'auth/invalid-api-key') {
         message.error('Firebase configuration issue detected. Please check your credentials.');
       } else if (error.code === 'auth/popup-blocked') {

@@ -61,31 +61,21 @@ const CascadingText: React.FC = () => {
 const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) => {
   const handleGoogleSignIn = async () => {
     try {
-      console.log('Starting Google sign-in process...');
       const { signInWithPopup, GoogleAuthProvider } = await import('firebase/auth');
       const { auth } = await import('../firebase/config');
-      
-      console.log('Firebase auth object:', auth);
-      console.log('Auth config:', auth.config);
       
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({
         prompt: 'select_account'
       });
       
-      console.log('Attempting signInWithPopup...');
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       
-      console.log('Sign-in successful:', user);
       message.success(`Welcome ${user.displayName || user.email}! Loading Todo App...`);
-      // Immediate redirect to prevent white screen
       onConnect();
     } catch (error: any) {
-      console.error('Full authentication error:', error);
-      console.error('Error code:', error.code);
-      console.error('Error message:', error.message);
-      console.error('Error details:', error.customData);
+      console.error('Authentication error:', error);
       
       if (error.code === 'auth/popup-closed-by-user') {
         message.info('Sign-in cancelled');

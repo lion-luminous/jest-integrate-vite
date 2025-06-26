@@ -226,7 +226,9 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               color: '#8B5CF6',
               textShadow: '0 0 10px rgba(139, 92, 246, 0.5)',
               fontWeight: '600'
-            }}>Reality Synthesis Protocol</Title>
+            }}>
+              <span style={{ color: '#8B5CF6' }}>Synthesis Protocol</span>
+            </Title>
             <Space direction="vertical" className="w-full">
               <div className="flex items-center">
                 <div className="w-3 h-3 rounded-full mr-3 animate-pulse" style={{ 
@@ -234,8 +236,8 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
                   boxShadow: '0 0 10px rgba(139, 92, 246, 0.8)'
                 }}></div>
                 <Text style={{ 
-                  color: '#06B6D4',
-                  textShadow: '0 0 5px rgba(6, 182, 212, 0.4)',
+                  color: '#8B5CF6',
+                  textShadow: '0 0 5px rgba(139, 92, 246, 0.4)',
                   fontSize: '13px'
                 }}>Neural Bridge Authentication</Text>
               </div>

@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
+import { signInWithPopup, signInWithRedirect, getRedirectResult, GoogleAuthProvider, signOut, User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
 // Use centralized Firebase configuration
 const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account'
+});
 
 interface AuthContextType {
   user: User | null;
@@ -26,12 +29,30 @@ interface AuthProviderProps {
   children: React.ReactNode;
 }
 
+// Detect if we're on mobile for authentication method selection
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const checkRedirectResult = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result) {
+          console.log('Redirect sign-in successful:', result.user);
+        }
+      } catch (error) {
+        console.error('Redirect sign-in error:', error);
+      }
+    };
+
+    checkRedirectResult();
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
     });
@@ -41,7 +62,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, provider);
+      if (isMobile()) {
+        // Use redirect for mobile devices
+        await signInWithRedirect(auth, provider);
+      } else {
+        // Use popup for desktop
+        await signInWithPopup(auth, provider);
+      }
     } catch (error) {
       console.error('Login failed:', error);
       throw error;

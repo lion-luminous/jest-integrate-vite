@@ -17,8 +17,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
       const provider = new GoogleAuthProvider();
       // Force account selection popup even if user is already signed in
       provider.setCustomParameters({
-        prompt: 'select_account',
-        hd: undefined // Allow any domain
+        prompt: 'select_account'
       });
       
       const result = await signInWithPopup(auth, provider);

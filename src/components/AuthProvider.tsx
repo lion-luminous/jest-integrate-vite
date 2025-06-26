@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
+import { auth } from '../firebase/config';
 
 // Firebase configuration (you'll need to replace with your actual config)
 const firebaseConfig = {

@@ -9,11 +9,31 @@ interface SimpleConnectWalletProps {
 }
 
 const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) => {
-  const handleGoogleSignIn = () => {
-    message.success('Welcome! Connecting to Todo App...');
-    setTimeout(() => {
-      onConnect();
-    }, 1000);
+  const handleGoogleSignIn = async () => {
+    try {
+      const { signInWithPopup, GoogleAuthProvider } = await import('firebase/auth');
+      const { auth } = await import('../firebase/config');
+      
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({
+        prompt: 'select_account'
+      });
+      
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      
+      message.success(`Welcome ${user.displayName}! Connecting to Todo App...`);
+      setTimeout(() => {
+        onConnect();
+      }, 1000);
+    } catch (error: any) {
+      console.error('Authentication error:', error);
+      if (error.code === 'auth/configuration-not-found' || error.code === 'auth/invalid-api-key') {
+        message.error('Firebase configuration needed. Please set up your Firebase credentials.');
+      } else {
+        message.error('Authentication failed. Please try again.');
+      }
+    }
   };
 
   return (

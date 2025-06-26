@@ -1,0 +1,6 @@
+[deployment]
+build = ["npm", "run", "build"]
+run = ["node", "server.js"]
+
+[env]
+NODE_ENV = "production"

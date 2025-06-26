@@ -24,24 +24,19 @@ const Todo = () => {
                         >
                                 <div style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', fontWeight: 'bold', letterSpacing: '2px', textAlign: 'center', marginBottom: '8px' }}>
                                         {'ETHEREAL DEGEN'.split('').map((letter, index) => {
-                                                const colors = [
-                                                        '#FF0080', '#FF4080', '#FF8040', '#FFB020', '#FFE000', '#C0FF00', 
-                                                        '#80FF40', '#40FF80', '#00FFB0', '#00E0FF', '#0080FF', '#4040FF', 
-                                                        '#8000FF', '#C000FF', '#FF00C0', '#FF0060', '#FF4060', '#FF8060'
+                                                const cyberpunkColors = [
+                                                        '#00FFFF', '#FF00FF', '#00FFFF', '#FF00FF', '#00FFFF', '#FFFF00', '#00FFFF', '#FF00FF',
+                                                        '#00FFFF', '#FF00FF', '#00FFFF', '#FFFF00', '#00FFFF'
                                                 ];
                                                 return (
                                                         <span
                                                                 key={index}
                                                                 style={{
-                                                                        color: colors[index % colors.length],
-                                                                        filter: `hue-rotate(${index * 20}deg) saturate(1.5) contrast(1.2)`,
-                                                                        background: `linear-gradient(45deg, ${colors[index % colors.length]}22, transparent)`,
-                                                                        WebkitBackgroundClip: 'text',
-                                                                        backgroundClip: 'text',
-                                                                        animation: `rainbow-cascade 8s ease-in-out infinite`,
-                                                                        animationDelay: `${index * 0.3}s`,
+                                                                        color: cyberpunkColors[index % cyberpunkColors.length],
+                                                                        textShadow: `0 0 10px ${cyberpunkColors[index % cyberpunkColors.length]}, 0 0 20px ${cyberpunkColors[index % cyberpunkColors.length]}40`,
                                                                         display: 'inline-block',
-                                                                        textShadow: `2px 2px 4px ${colors[index % colors.length]}44`,
+                                                                        fontWeight: '900',
+                                                                        textTransform: 'uppercase'
                                                                 }}
                                                         >
                                                                 {letter === ' ' ? '\u00A0' : letter}

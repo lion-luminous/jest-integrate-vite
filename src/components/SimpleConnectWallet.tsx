@@ -15,20 +15,24 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
       const { auth } = await import('../firebase/config');
       
       const provider = new GoogleAuthProvider();
+      // Force account selection popup even if user is already signed in
       provider.setCustomParameters({
-        prompt: 'select_account'
+        prompt: 'select_account',
+        hd: undefined // Allow any domain
       });
       
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       
-      message.success(`Welcome ${user.displayName}! Connecting to Todo App...`);
+      message.success(`Welcome ${user.displayName || user.email}! Connecting to Todo App...`);
       setTimeout(() => {
         onConnect();
       }, 1000);
     } catch (error: any) {
       console.error('Authentication error:', error);
-      if (error.code === 'auth/configuration-not-found' || error.code === 'auth/invalid-api-key') {
+      if (error.code === 'auth/popup-closed-by-user') {
+        message.info('Sign-in cancelled');
+      } else if (error.code === 'auth/configuration-not-found' || error.code === 'auth/invalid-api-key') {
         message.error('Firebase configuration needed. Please set up your Firebase credentials.');
       } else {
         message.error('Authentication failed. Please try again.');

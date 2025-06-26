@@ -2,20 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { signInWithPopup, GoogleAuthProvider, signOut, User } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
-// Firebase configuration (you'll need to replace with your actual config)
-const firebaseConfig = {
-  // Add your Firebase config here
-  apiKey: process.env.VITE_FIREBASE_API_KEY || "demo-key",
-  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN || "demo.firebaseapp.com",
-  projectId: process.env.VITE_FIREBASE_PROJECT_ID || "demo-project",
-  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET || "demo.appspot.com",
-  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789",
-  appId: process.env.VITE_FIREBASE_APP_ID || "demo-app-id"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// Use centralized Firebase configuration
 const provider = new GoogleAuthProvider();
 
 interface AuthContextType {

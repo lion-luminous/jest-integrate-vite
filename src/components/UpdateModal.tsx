@@ -27,7 +27,7 @@ const UpdateModal = () => {
 
         return (
                 <Modal
-                        title={<span style={{ color: '#FFD700', fontWeight: '700', fontSize: '18px' }}>⚡ UPDATE TASK ⚡</span>}
+                        title={<span style={{ color: '#8B5CF6', fontWeight: '700', fontSize: '18px' }}>⚡ UPDATE TASK ⚡</span>}
                         open={isOpen}
                         onCancel={closeModal}
                         onOk={form.submit}
@@ -49,7 +49,7 @@ const UpdateModal = () => {
                         okButtonProps={{
                                 style: {
                                         background: '#2a2a2a',
-                                        color: '#FFD700',
+                                        color: '#06B6D4',
                                         border: '2px solid rgba(255, 215, 0, 0.8)',
                                         fontWeight: '600'
                                 }
@@ -69,7 +69,7 @@ const UpdateModal = () => {
                                 onFinish={handleUpdate}
                         >
                                 <Form.Item
-                                        label={<span style={{ color: '#FFD700', fontWeight: '600' }}>Title</span>}
+                                        label={<span style={{ color: '#8B5CF6', fontWeight: '600' }}>Title</span>}
                                         name='title'
                                         rules={[
                                                 {
@@ -83,13 +83,13 @@ const UpdateModal = () => {
                                                 autoFocus
                                                 style={{
                                                         background: '#1a1a1a',
-                                                        border: '1px solid rgba(255, 215, 0, 0.5)',
-                                                        color: '#FFD700'
+                                                        border: '1px solid rgba(139, 92, 246, 0.5)',
+                                                        color: '#06B6D4'
                                                 }}
                                         />
                                 </Form.Item>
                                 <Form.Item
-                                        label={<span style={{ color: '#FFD700', fontWeight: '600' }}>Description</span>}
+                                        label={<span style={{ color: '#8B5CF6', fontWeight: '600' }}>Description</span>}
                                         name='desc'
                                         rules={[
                                                 {
@@ -102,8 +102,8 @@ const UpdateModal = () => {
                                                 placeholder='Your task...' 
                                                 style={{
                                                         background: '#1a1a1a',
-                                                        border: '1px solid rgba(255, 215, 0, 0.5)',
-                                                        color: '#FFD700'
+                                                        border: '1px solid rgba(139, 92, 246, 0.5)',
+                                                        color: '#06B6D4'
                                                 }}
                                         />
                                 </Form.Item>

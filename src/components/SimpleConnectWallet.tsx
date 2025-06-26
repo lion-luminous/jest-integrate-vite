@@ -22,12 +22,12 @@ const CascadingText: React.FC = () => {
     const phase = (animationPhase + (index + wordOffset) * 0.3) % 6;
     let color;
     
-    if (phase < 1) color = `hsl(${320 + phase * 40}, 100%, 65%)`;
-    else if (phase < 2) color = `hsl(${360 + (phase - 1) * 60}, 100%, 65%)`;
-    else if (phase < 3) color = `hsl(${60 + (phase - 2) * 60}, 100%, 65%)`;
-    else if (phase < 4) color = `hsl(${120 + (phase - 3) * 60}, 100%, 65%)`;
-    else if (phase < 5) color = `hsl(${180 + (phase - 4) * 60}, 100%, 65%)`;
-    else color = `hsl(${240 + (phase - 5) * 80}, 100%, 65%)`;
+    if (phase < 1) color = `hsl(${320 + phase * 40}, 100%, 50%)`;
+    else if (phase < 2) color = `hsl(${360 + (phase - 1) * 60}, 100%, 50%)`;
+    else if (phase < 3) color = `hsl(${60 + (phase - 2) * 60}, 100%, 50%)`;
+    else if (phase < 4) color = `hsl(${120 + (phase - 3) * 60}, 100%, 50%)`;
+    else if (phase < 5) color = `hsl(${180 + (phase - 4) * 60}, 100%, 50%)`;
+    else color = `hsl(${240 + (phase - 5) * 80}, 100%, 50%)`;
 
     return (
       <span
@@ -38,9 +38,7 @@ const CascadingText: React.FC = () => {
           fontWeight: '900',
           textTransform: 'uppercase',
           fontFamily: 'Orbitron, monospace',
-          transition: 'color 0.5s ease-in-out',
-          filter: `drop-shadow(0 0 4px ${color})`,
-          textShadow: `0 0 8px ${color}`
+          transition: 'color 0.5s ease-in-out'
         }}
       >
         {letter}
@@ -49,14 +47,14 @@ const CascadingText: React.FC = () => {
   };
 
   return (
-    <>
-      <span style={{ marginRight: '1rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+      <div>
         {'ETHEREAL'.split('').map((letter, index) => renderLetter(letter, index, 0))}
-      </span>
-      <span>
+      </div>
+      <div>
         {'DEGENERATE'.split('').map((letter, index) => renderLetter(letter, index, 8))}
-      </span>
-    </>
+      </div>
+    </div>
   );
 };
 

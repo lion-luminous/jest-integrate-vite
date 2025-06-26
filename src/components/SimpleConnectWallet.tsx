@@ -307,7 +307,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               fontWeight: '900',
               letterSpacing: '3px'
             }}>
-              OOGLING
+              GOOGLING
             </span>
           </Button>
 

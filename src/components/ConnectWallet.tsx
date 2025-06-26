@@ -93,7 +93,7 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({ onGoogleSignIn }) => {
               letterSpacing: '3px',
               fontSize: 'clamp(16px, 4vw, 20px)'
             }}>
-              OOGLING
+              GOOGLING
             </span>
           </Button>
 

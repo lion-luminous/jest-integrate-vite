@@ -1,5 +1,5 @@
 [deployment]
-build = ["npm", "run", "build"]
+build = ["node", "simple-build.js"]
 run = ["node", "production-server.js"]
 
 [env]

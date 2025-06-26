@@ -16,7 +16,11 @@ function App() {
         }
 
         return (
-                <div className="min-h-screen bg-gray-50">
+                <div className="min-h-screen" 
+                     style={{ 
+                       background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #000814 75%, #001d3d 100%)',
+                       position: 'relative'
+                     }}>
                         <Todo />
                 </div>
         )

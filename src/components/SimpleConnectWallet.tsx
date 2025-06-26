@@ -78,10 +78,9 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
       const user = result.user;
       
       console.log('Sign-in successful:', user);
-      message.success(`Welcome ${user.displayName || user.email}! Connecting to Todo App...`);
-      setTimeout(() => {
-        onConnect();
-      }, 1000);
+      message.success(`Welcome ${user.displayName || user.email}! Loading Todo App...`);
+      // Immediate redirect to prevent white screen
+      onConnect();
     } catch (error: any) {
       console.error('Full authentication error:', error);
       console.error('Error code:', error.code);

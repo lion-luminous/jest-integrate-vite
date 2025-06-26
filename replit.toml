@@ -1,6 +1,6 @@
 [deployment]
 build = ["npm", "run", "build"]
-run = ["node", "server.js"]
+run = ["node", "production-server.js"]
 
 [env]
 NODE_ENV = "production"

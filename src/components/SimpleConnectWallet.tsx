@@ -90,10 +90,11 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
             </div>
             <Title level={1} className="mb-2"
                    style={{ 
-                     color: '#FFD700',
+                     color: '#EC4899',
                      fontWeight: 'bold',
                      fontSize: '3rem',
-                     letterSpacing: '2px'
+                     letterSpacing: '2px',
+                     textShadow: '0 0 15px rgba(236, 72, 153, 0.9), 0 0 30px rgba(236, 72, 153, 0.6)'
                    }}>
               ETHEREAL DEGENERATE
             </Title>

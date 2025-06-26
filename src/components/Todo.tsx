@@ -25,10 +25,10 @@ const Todo = () => {
                                 <Typography.Title 
                                         level={1}
                                         style={{
-                                                color: '#FFD700',
+                                                color: '#EC4899',
                                                 textAlign: 'center',
                                                 fontWeight: 'bold',
-                                                textShadow: '0 0 20px rgba(255, 215, 0, 0.8)',
+                                                textShadow: '0 0 20px rgba(236, 72, 153, 0.9), 0 0 40px rgba(236, 72, 153, 0.6)',
                                                 fontSize: '2.5rem',
                                                 letterSpacing: '2px',
                                                 marginBottom: '8px'

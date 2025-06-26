@@ -32,27 +32,28 @@ const Todo = () => {
                                         lineHeight: '1.1',
                                         wordSpacing: '0.05em'
                                 }}>
-                                        {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
-                                                const degenColors = [
-                                                        '#FF1744', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3',
-                                                        '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B',
-                                                        '#FF9800', '#FF5722', '#795548', '#607D8B', '#F44336', '#E91E63', '#9C27B0'
-                                                ];
-                                                return (
-                                                        <span
-                                                                key={index}
-                                                                style={{
-                                                                        color: degenColors[index % degenColors.length],
-                                                                        display: 'inline-block',
-                                                                        fontWeight: '900',
-                                                                        textTransform: 'uppercase',
-                                                                        fontFamily: 'Orbitron, monospace'
-                                                                }}
-                                                        >
-                                                                {letter === ' ' ? '\u00A0' : letter}
-                                                        </span>
-                                                );
-                                        })}
+                                        <span style={{ marginRight: '1rem' }}>
+                                                {'ETHEREAL'.split('').map((letter, index) => {
+                                                        const etherealColors = [
+                                                                '#FF1744', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#00BCD4'
+                                                        ];
+                                                        return (
+                                                                <span
+                                                                        key={index}
+                                                                        style={{
+                                                                                color: etherealColors[index % etherealColors.length],
+                                                                                display: 'inline-block',
+                                                                                fontWeight: '900',
+                                                                                textTransform: 'uppercase',
+                                                                                fontFamily: 'Orbitron, monospace'
+                                                                        }}
+                                                                >
+                                                                        {letter}
+                                                                </span>
+                                                        );
+                                                })}
+                                        </span>
+                                        <DegenerateWaterfall />
                                 </div>
                                 <Typography.Text 
                                         style={{

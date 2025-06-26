@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Card, Typography, Space, Divider, message } from 'antd';
 import { GoogleOutlined, WalletOutlined, FireOutlined, RocketOutlined } from '@ant-design/icons';
 
@@ -7,6 +7,51 @@ const { Title, Text } = Typography;
 interface SimpleConnectWalletProps {
   onConnect: () => void;
 }
+
+const DegenerateWaterfall: React.FC = () => {
+  const [animationPhase, setAnimationPhase] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimationPhase(prev => (prev + 0.1) % 6);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span>
+      {'DEGENERATE'.split('').map((letter, index) => {
+        const phase = (animationPhase + index * 0.4) % 6;
+        let color;
+        
+        if (phase < 1) color = `hsl(${320 + phase * 40}, 100%, 65%)`;
+        else if (phase < 2) color = `hsl(${360 + (phase - 1) * 60}, 100%, 65%)`;
+        else if (phase < 3) color = `hsl(${60 + (phase - 2) * 60}, 100%, 65%)`;
+        else if (phase < 4) color = `hsl(${120 + (phase - 3) * 60}, 100%, 65%)`;
+        else if (phase < 5) color = `hsl(${180 + (phase - 4) * 60}, 100%, 65%)`;
+        else color = `hsl(${240 + (phase - 5) * 80}, 100%, 65%)`;
+
+        return (
+          <span
+            key={index}
+            style={{
+              color: color,
+              display: 'inline-block',
+              fontWeight: '900',
+              textTransform: 'uppercase',
+              fontFamily: 'Orbitron, monospace',
+              transition: 'color 0.3s ease-in-out',
+              filter: `drop-shadow(0 0 4px ${color})`,
+              textShadow: `0 0 8px ${color}`
+            }}
+          >
+            {letter}
+          </span>
+        );
+      })}
+    </span>
+  );
+};
 
 const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) => {
   const handleGoogleSignIn = async () => {
@@ -106,27 +151,28 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) 
               lineHeight: '1.1',
               wordSpacing: '0.05em'
             }}>
-              {'ETHEREAL DEGENERATE'.split('').map((letter, index) => {
-                const degenColors = [
-                  '#FF1744', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3',
-                  '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B',
-                  '#FF9800', '#FF5722', '#795548', '#607D8B', '#F44336', '#E91E63', '#9C27B0'
-                ];
-                return (
-                  <span
-                    key={index}
-                    style={{
-                      color: degenColors[index % degenColors.length],
-                      display: 'inline-block',
-                      fontWeight: '900',
-                      textTransform: 'uppercase',
-                      fontFamily: 'Orbitron, monospace'
-                    }}
-                  >
-                    {letter === ' ' ? '\u00A0' : letter}
-                  </span>
-                );
-              })}
+              <span style={{ marginRight: '1rem' }}>
+                {'ETHEREAL'.split('').map((letter, index) => {
+                  const etherealColors = [
+                    '#FF1744', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#00BCD4'
+                  ];
+                  return (
+                    <span
+                      key={index}
+                      style={{
+                        color: etherealColors[index % etherealColors.length],
+                        display: 'inline-block',
+                        fontWeight: '900',
+                        textTransform: 'uppercase',
+                        fontFamily: 'Orbitron, monospace'
+                      }}
+                    >
+                      {letter}
+                    </span>
+                  );
+                })}
+              </span>
+              <DegenerateWaterfall />
             </div>
             <Text className="text-xl" style={{ 
               color: '#FFD700', 

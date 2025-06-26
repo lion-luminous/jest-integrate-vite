@@ -61,30 +61,43 @@ const CascadingText: React.FC = () => {
 const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = ({ onConnect }) => {
   const handleGoogleSignIn = async () => {
     try {
+      console.log('Starting Google sign-in process...');
       const { signInWithPopup, GoogleAuthProvider } = await import('firebase/auth');
       const { auth } = await import('../firebase/config');
       
+      console.log('Firebase auth object:', auth);
+      console.log('Auth config:', auth.config);
+      
       const provider = new GoogleAuthProvider();
-      // Force account selection popup even if user is already signed in
       provider.setCustomParameters({
         prompt: 'select_account'
       });
       
+      console.log('Attempting signInWithPopup...');
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       
+      console.log('Sign-in successful:', user);
       message.success(`Welcome ${user.displayName || user.email}! Connecting to Todo App...`);
       setTimeout(() => {
         onConnect();
       }, 1000);
     } catch (error: any) {
-      console.error('Authentication error:', error);
+      console.error('Full authentication error:', error);
+      console.error('Error code:', error.code);
+      console.error('Error message:', error.message);
+      console.error('Error details:', error.customData);
+      
       if (error.code === 'auth/popup-closed-by-user') {
         message.info('Sign-in cancelled');
       } else if (error.code === 'auth/configuration-not-found' || error.code === 'auth/invalid-api-key') {
-        message.error('Firebase configuration needed. Please set up your Firebase credentials.');
+        message.error('Firebase configuration issue detected. Please check your credentials.');
+      } else if (error.code === 'auth/popup-blocked') {
+        message.error('Popup blocked by browser. Please allow popups and try again.');
+      } else if (error.code === 'auth/unauthorized-domain') {
+        message.error('Domain not authorized for Firebase authentication.');
       } else {
-        message.error('Authentication failed. Please try again.');
+        message.error(`Authentication failed: ${error.message}`);
       }
     }
   };

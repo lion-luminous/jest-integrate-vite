@@ -2,9 +2,9 @@ run = "node server/index.js"
 entrypoint = "server/index.js"
 
 [deployment]
-run = ["node", "server/index.js"]
+run = ["npm", "start"]
 deploymentTarget = "cloudrun"
-build = ["npm", "install"]
+build = ["sh", "-c", "npm install && npm run build"]
 
 [env]
 NODE_ENV = "production"

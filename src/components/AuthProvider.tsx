@@ -2,11 +2,14 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { signInWithPopup, GoogleAuthProvider, signOut, User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
-// Use centralized Firebase configuration
+// Configure Google provider for mobile compatibility
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
-  prompt: 'select_account'
+  prompt: 'select_account',
+  display: 'popup'
 });
+provider.addScope('email');
+provider.addScope('profile');
 
 interface AuthContextType {
   user: User | null;
@@ -40,12 +43,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     let unsubscribeAuth: (() => void) | undefined;
 
     const initializeAuth = () => {
-      console.log('Setting up authentication');
+      console.log('Initializing auth state listener');
       
       unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
         if (mounted) {
-          console.log('Auth state:', currentUser ? 'Logged in' : 'Logged out');
-          setUser(currentUser);
+          if (currentUser) {
+            console.log('User authenticated:', currentUser.email);
+            setUser(currentUser);
+          } else {
+            console.log('No authenticated user');
+            setUser(null);
+          }
           setLoading(false);
         }
       });
@@ -63,21 +71,30 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
-      console.log('Google sign-in started');
+      console.log('Starting authentication process...');
       setLoading(true);
+      
+      // Force a clean authentication state
+      try {
+        await signOut(auth);
+      } catch (signOutError) {
+        console.log('Sign out not needed, proceeding...');
+      }
+      
+      // Wait a moment for any cleanup
+      await new Promise(resolve => setTimeout(resolve, 300));
       
       const result = await signInWithPopup(auth, provider);
       
       if (result?.user) {
-        console.log('Authentication successful:', result.user.email);
+        console.log('Authentication successful for:', result.user.email);
         setUser(result.user);
       }
       
     } catch (error) {
-      console.error('Authentication failed:', error);
-      throw error;
-    } finally {
+      console.error('Authentication error:', error);
       setLoading(false);
+      throw error;
     }
   };
 

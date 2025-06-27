@@ -63,7 +63,7 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = () => {
   const handleGoogleSignIn = async () => {
     try {
       console.log('Starting Google sign-in...');
-      message.loading('Connecting to neural bridge...', 0.5);
+      message.loading('Connecting to neural bridge...', 1);
       
       await signInWithGoogle();
       message.success('Authentication successful! Entering cyber realm...');

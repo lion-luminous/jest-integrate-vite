@@ -1,4 +1,4 @@
-run = "node server/index.js"
+run = "cd eth-degen-taskchain && node server/index.js"
 entrypoint = "server/index.js"
 
 [deployment]

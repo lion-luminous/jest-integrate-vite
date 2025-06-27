@@ -27,7 +27,7 @@ app.get('/api/status', (_, reply) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen({ port: PORT, host: '0.0.0.0' }).then(() => {
   console.log(`🚀 ETHEREAL DEGENERATE TASKCHAIN Server running on port ${PORT}`);

@@ -1,12 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { signInWithPopup, GoogleAuthProvider, signOut, User, onAuthStateChanged } from 'firebase/auth';
+import { signInWithPopup, signInWithRedirect, getRedirectResult, GoogleAuthProvider, signOut, User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
 // Configure Google provider for mobile compatibility
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
-  prompt: 'select_account',
-  display: 'popup'
+  prompt: 'select_account'
 });
 provider.addScope('email');
 provider.addScope('profile');
@@ -42,9 +41,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     let mounted = true;
     let unsubscribeAuth: (() => void) | undefined;
 
-    const initializeAuth = () => {
+    const initializeAuth = async () => {
       console.log('Initializing auth state listener');
       
+      // Check for redirect result first (for mobile)
+      try {
+        const result = await getRedirectResult(auth);
+        if (result?.user) {
+          console.log('Mobile redirect authentication successful:', result.user.email);
+          setUser(result.user);
+          setLoading(false);
+          return;
+        }
+      } catch (error) {
+        console.log('No redirect result:', error);
+      }
+      
+      // Set up auth state listener
       unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
         if (mounted) {
           if (currentUser) {
@@ -71,24 +84,26 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
-      console.log('Starting authentication process...');
+      console.log('Starting Google authentication...');
       setLoading(true);
       
-      // Force a clean authentication state
-      try {
-        await signOut(auth);
-      } catch (signOutError) {
-        console.log('Sign out not needed, proceeding...');
-      }
+      // Detect if we're on mobile
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       
-      // Wait a moment for any cleanup
-      await new Promise(resolve => setTimeout(resolve, 300));
-      
-      const result = await signInWithPopup(auth, provider);
-      
-      if (result?.user) {
-        console.log('Authentication successful for:', result.user.email);
-        setUser(result.user);
+      if (isMobile) {
+        console.log('Using redirect for mobile device');
+        // Use redirect for mobile
+        await signInWithRedirect(auth, provider);
+        // Don't set loading to false here - redirect will handle it
+      } else {
+        console.log('Using popup for desktop');
+        // Use popup for desktop
+        const result = await signInWithPopup(auth, provider);
+        if (result?.user) {
+          console.log('Desktop authentication successful:', result.user.email);
+          setUser(result.user);
+        }
+        setLoading(false);
       }
       
     } catch (error) {
@@ -100,12 +115,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = async () => {
     try {
+      setLoading(true);
       await signOut(auth);
+      setUser(null);
       // Clear any local storage or session storage
       localStorage.clear();
       sessionStorage.clear();
+      setLoading(false);
     } catch (error) {
       console.error('Logout failed:', error);
+      setLoading(false);
       throw error;
     }
   };

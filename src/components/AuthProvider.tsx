@@ -39,10 +39,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let mounted = true;
+
     const checkRedirectResult = async () => {
       try {
         const result = await getRedirectResult(auth);
-        if (result) {
+        if (result && mounted) {
           console.log('Redirect sign-in successful:', result.user);
         }
       } catch (error) {
@@ -53,12 +55,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     checkRedirectResult();
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log('Auth state changed:', user ? 'User logged in' : 'User logged out');
-      setUser(user);
-      setLoading(false);
+      if (mounted) {
+        console.log('Auth state changed:', user ? 'User logged in' : 'User logged out');
+        setUser(user);
+        setLoading(false);
+      }
     });
 
-    return () => unsubscribe();
+    return () => {
+      mounted = false;
+      unsubscribe();
+    };
   }, []);
 
   const signInWithGoogle = async () => {

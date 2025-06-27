@@ -1,5 +1,7 @@
 [deployment]
-run = ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5000", "--force"]
+build = ["npm", "run", "build"]
+run = ["node", "production-server.cjs"]
 
 [env]
 NODE_ENV = "production"
+PORT = "5000"

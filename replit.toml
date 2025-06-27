@@ -1,6 +1,6 @@
 [deployment]
 build = ["npm", "install"]
-run = ["node", "simple-deploy.js"]
+run = ["node", "simple-deploy.cjs"]
 deploymentTarget = "autoscale"
 
 [env]

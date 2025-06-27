@@ -9,12 +9,13 @@ function App() {
 
         console.log('App render - User:', user?.email || 'None', 'Loading:', loading);
         
-        // Check for authentication attempt on mobile
+        // Debug mobile authentication flow
         const authAttempt = localStorage.getItem('authAttempt');
-        const authCompleted = localStorage.getItem('authCompleted');
+        const mobileAuthSuccess = localStorage.getItem('mobileAuthSuccess');
         
-        if (authAttempt && !authCompleted && !user && !loading) {
-                console.log('Auth attempt detected but no user - mobile redirect may have failed');
+        if (authAttempt && !mobileAuthSuccess && !user && !loading) {
+                console.log('WARNING: Mobile auth attempt detected but no successful authentication');
+                console.log('This indicates the redirect flow may have failed');
                 localStorage.removeItem('authAttempt');
         }
 

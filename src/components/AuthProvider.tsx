@@ -40,68 +40,95 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     let mounted = true;
+    let unsubscribeAuth: (() => void) | undefined;
 
-    const checkRedirectResult = async () => {
+    const handleRedirectResult = async () => {
       try {
         console.log('Checking for redirect result...');
         const result = await getRedirectResult(auth);
-        if (result && result.user && mounted) {
-          console.log('Redirect sign-in successful:', result.user);
-          setUser(result.user);
-          setLoading(false);
+        
+        if (result && result.user) {
+          console.log('Redirect authentication successful:', result.user.email);
+          if (mounted) {
+            setUser(result.user);
+            setLoading(false);
+            // Store successful authentication in localStorage for persistence
+            localStorage.setItem('authCompleted', 'true');
+          }
           return true;
         }
+        console.log('No redirect result found');
         return false;
       } catch (error) {
-        console.error('Redirect sign-in error:', error);
+        console.error('Redirect result error:', error);
         return false;
       }
     };
 
-    // Always check for redirect result on page load (critical for mobile flow)
-    const initAuth = async () => {
-      const hadRedirectResult = await checkRedirectResult();
-      if (!hadRedirectResult && mounted) {
-        // Only set up auth state listener if no redirect result was found
-        setLoading(false);
+    const setupAuthListener = () => {
+      console.log('Setting up auth state listener...');
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (mounted) {
+          console.log('Auth state changed:', user ? `User: ${user.email}` : 'No user');
+          setUser(user);
+          setLoading(false);
+          
+          if (user) {
+            localStorage.setItem('authCompleted', 'true');
+          } else {
+            localStorage.removeItem('authCompleted');
+          }
+        }
+      });
+      return unsubscribe;
+    };
+
+    const initializeAuth = async () => {
+      // Always check for redirect result first
+      const hadRedirectResult = await handleRedirectResult();
+      
+      if (!hadRedirectResult) {
+        // Set up auth state listener if no redirect result
+        unsubscribeAuth = setupAuthListener();
       }
     };
 
-    initAuth();
-
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (mounted) {
-        console.log('Auth state changed:', user ? 'User logged in' : 'User logged out');
-        setUser(user);
-        setLoading(false);
-      }
-    });
+    initializeAuth();
 
     return () => {
       mounted = false;
-      unsubscribe();
+      if (unsubscribeAuth) {
+        unsubscribeAuth();
+      }
     };
   }, []);
 
   const signInWithGoogle = async () => {
     try {
       setLoading(true);
+      
+      // Clear any previous auth state
+      localStorage.removeItem('authCompleted');
+      
       if (isMobile()) {
-        // Use redirect for mobile devices - this will redirect away from the page
-        console.log('Starting mobile redirect authentication...');
+        console.log('Mobile device detected - using redirect flow');
+        // Store that we're attempting authentication
+        localStorage.setItem('authAttempt', 'true');
         await signInWithRedirect(auth, provider);
-        // Note: execution stops here on mobile as page redirects
+        // Execution stops here on mobile - page will redirect
       } else {
-        // Use popup for desktop
-        console.log('Starting desktop popup authentication...');
+        console.log('Desktop device detected - using popup flow');
         const result = await signInWithPopup(auth, provider);
-        if (result) {
-          console.log('Desktop authentication successful:', result.user);
+        if (result && result.user) {
+          console.log('Desktop popup authentication successful:', result.user.email);
+          setUser(result.user);
+          localStorage.setItem('authCompleted', 'true');
         }
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Google sign-in failed:', error);
       setLoading(false);
+      localStorage.removeItem('authAttempt');
       throw error;
     }
   };

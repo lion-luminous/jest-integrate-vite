@@ -62,11 +62,20 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = () => {
   
   const handleGoogleSignIn = async () => {
     try {
+      console.log('Starting Google sign-in process...');
       message.loading('Connecting to neural bridge...', 0.5);
-      await signInWithGoogle();
-      message.success('Authentication successful! Entering cyber realm...');
       
-      // Firebase auth state change will automatically redirect to Todo app
+      // Check if mobile
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      console.log('Device type:', isMobile ? 'Mobile' : 'Desktop');
+      
+      await signInWithGoogle();
+      
+      if (!isMobile) {
+        message.success('Authentication successful! Entering cyber realm...');
+      }
+      // On mobile, the page will redirect so we won't reach this point
+      
     } catch (error: any) {
       console.error('Authentication error:', error);
       

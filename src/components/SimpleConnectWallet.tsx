@@ -62,19 +62,11 @@ const SimpleConnectWallet: React.FC<SimpleConnectWalletProps> = () => {
   
   const handleGoogleSignIn = async () => {
     try {
-      console.log('Starting Google sign-in process...');
+      console.log('Starting Google sign-in...');
       message.loading('Connecting to neural bridge...', 0.5);
       
-      // Check if mobile
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      console.log('Device type:', isMobile ? 'Mobile' : 'Desktop');
-      
       await signInWithGoogle();
-      
-      if (!isMobile) {
-        message.success('Authentication successful! Entering cyber realm...');
-      }
-      // On mobile, the page will redirect so we won't reach this point
+      message.success('Authentication successful! Entering cyber realm...');
       
     } catch (error: any) {
       console.error('Authentication error:', error);

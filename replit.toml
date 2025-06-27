@@ -1,6 +1,8 @@
 [deployment]
 build = ["npm", "run", "build"]
-run = ["node", "production-server.cjs"]
+run = ["node", "preview-server.js"]
+deploymentTarget = "autoscale"
+publicDir = "dist"
 
 [env]
 NODE_ENV = "production"

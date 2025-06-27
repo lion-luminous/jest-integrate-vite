@@ -1,8 +1,20 @@
 import { useState } from 'react'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { useTaskchain } from './hooks/useTaskchain'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [loading, setLoading] = useState<string | null>(null)
+  const { 
+    tasks, 
+    activeTaskCount, 
+    connectedUsers, 
+    isConnected, 
+    address,
+    deployContract, 
+    connectWallet, 
+    initializeMatrix 
+  } = useTaskchain()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyber-dark via-purple-900 to-blue-900 text-cyber-cyan">
@@ -26,8 +38,16 @@ function App() {
               <p className="text-gray-300 mb-4">
                 Decentralized task management powered by Ethereum smart contracts
               </p>
-              <button className="bg-gradient-to-r from-cyber-cyan to-blue-500 text-white px-6 py-2 rounded-lg font-orbitron hover:scale-105 transition-transform">
-                Deploy Contracts
+              <button 
+                onClick={async () => {
+                  setLoading('deploy');
+                  await deployContract();
+                  setLoading(null);
+                }}
+                disabled={loading === 'deploy'}
+                className="bg-gradient-to-r from-cyber-cyan to-blue-500 text-white px-6 py-2 rounded-lg font-orbitron hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading === 'deploy' ? 'Deploying...' : 'Deploy Contracts'}
               </button>
             </div>
 
@@ -36,9 +56,26 @@ function App() {
               <p className="text-gray-300 mb-4">
                 Connect your wallet to access the task realm
               </p>
-              <button className="bg-gradient-to-r from-cyber-purple to-pink-500 text-white px-6 py-2 rounded-lg font-orbitron hover:scale-105 transition-transform">
-                Connect Wallet
-              </button>
+              {isConnected ? (
+                <div className="space-y-2">
+                  <ConnectButton />
+                  <p className="text-xs text-gray-400">
+                    {address?.slice(0, 6)}...{address?.slice(-4)}
+                  </p>
+                </div>
+              ) : (
+                <button 
+                  onClick={async () => {
+                    setLoading('wallet');
+                    await connectWallet();
+                    setLoading(null);
+                  }}
+                  disabled={loading === 'wallet'}
+                  className="bg-gradient-to-r from-cyber-purple to-pink-500 text-white px-6 py-2 rounded-lg font-orbitron hover:scale-105 transition-transform disabled:opacity-50"
+                >
+                  {loading === 'wallet' ? 'Connecting...' : 'Connect Wallet'}
+                </button>
+              )}
             </div>
           </div>
 
@@ -47,11 +84,11 @@ function App() {
               <h3 className="text-2xl font-orbitron text-cyber-pink mb-4">System Status</h3>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-cyber-cyan">{count}</div>
+                  <div className="text-3xl font-bold text-cyber-cyan">{activeTaskCount}</div>
                   <div className="text-sm text-gray-400">Active Tasks</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-cyber-purple">0</div>
+                  <div className="text-3xl font-bold text-cyber-purple">{connectedUsers}</div>
                   <div className="text-sm text-gray-400">Connected Users</div>
                 </div>
                 <div>
@@ -60,10 +97,15 @@ function App() {
                 </div>
               </div>
               <button 
-                onClick={() => setCount(count + 1)}
-                className="mt-6 bg-gradient-to-r from-cyber-pink to-red-500 text-white px-8 py-3 rounded-lg font-orbitron hover:scale-105 transition-transform"
+                onClick={() => {
+                  setLoading('matrix');
+                  initializeMatrix();
+                  setTimeout(() => setLoading(null), 1500);
+                }}
+                disabled={loading === 'matrix'}
+                className="mt-6 bg-gradient-to-r from-cyber-pink to-red-500 text-white px-8 py-3 rounded-lg font-orbitron hover:scale-105 transition-transform disabled:opacity-50"
               >
-                Initialize Task Matrix
+                {loading === 'matrix' ? 'Initializing...' : 'Initialize Task Matrix'}
               </button>
             </div>
           </div>

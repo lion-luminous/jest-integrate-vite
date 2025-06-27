@@ -21,20 +21,7 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Deploy ETHEREAL TASKCHAIN"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
 args = "ETHEREAL TASKCHAIN"
-
-[[workflows.workflow]]
-name = "Deploy ETHEREAL TASKCHAIN"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "cd eth-degen-taskchain && node server/index.js"
-waitForPort = 5000
 
 [[workflows.workflow]]
 name = "ETHEREAL TASKCHAIN"

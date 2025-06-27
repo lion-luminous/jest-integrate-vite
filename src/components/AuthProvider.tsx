@@ -39,32 +39,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     let mounted = true;
     let unsubscribeAuth: (() => void) | undefined;
 
-    const initializeAuth = async () => {
-      try {
-        console.log('Initializing authentication...');
-        
-        // Set up auth state listener (simplified approach)
-        unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
-          if (mounted) {
-            console.log('Auth state:', currentUser ? `Authenticated: ${currentUser.email}` : 'Not authenticated');
-            setUser(currentUser);
-            setLoading(false);
-            
-            if (currentUser) {
-              localStorage.setItem('mobileAuthSuccess', 'true');
-              localStorage.removeItem('authAttempt');
-            } else {
-              localStorage.removeItem('mobileAuthSuccess');
-            }
-          }
-        });
-
-      } catch (error) {
-        console.error('Auth initialization failed:', error);
+    const initializeAuth = () => {
+      console.log('Setting up authentication');
+      
+      unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
         if (mounted) {
+          console.log('Auth state:', currentUser ? 'Logged in' : 'Logged out');
+          setUser(currentUser);
           setLoading(false);
         }
-      }
+      });
     };
 
     initializeAuth();
@@ -79,30 +63,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
-      console.log('Starting Google authentication...');
+      console.log('Google sign-in started');
       setLoading(true);
       
-      // Clear previous state
-      localStorage.removeItem('mobileAuthSuccess');
-      localStorage.setItem('authAttempt', 'popup_flow');
-      
-      // Use popup for ALL devices (mobile and desktop)
-      console.log('Using popup authentication for all devices...');
       const result = await signInWithPopup(auth, provider);
       
       if (result?.user) {
-        console.log('Popup authentication successful:', result.user.email);
+        console.log('Authentication successful:', result.user.email);
         setUser(result.user);
-        localStorage.setItem('mobileAuthSuccess', 'true');
-        localStorage.removeItem('authAttempt');
       }
-      setLoading(false);
       
     } catch (error) {
-      console.error('Popup authentication failed:', error);
-      setLoading(false);
-      localStorage.removeItem('authAttempt');
+      console.error('Authentication failed:', error);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 

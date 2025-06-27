@@ -44,26 +44,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const initializeAuth = async () => {
       try {
-        console.log('Auth initialization starting...');
+        console.log('Initializing authentication...');
         
-        // CRITICAL: Check redirect result first for mobile flow
-        const redirectResult = await getRedirectResult(auth);
-        console.log('Redirect result check:', redirectResult ? 'Found user' : 'No redirect result');
-        
-        if (redirectResult?.user && mounted) {
-          console.log('MOBILE SUCCESS: User authenticated via redirect:', redirectResult.user.email);
-          setUser(redirectResult.user);
-          setLoading(false);
-          localStorage.setItem('mobileAuthSuccess', 'true');
-          localStorage.removeItem('authAttempt');
-          return; // Exit immediately - we have authenticated user
-        }
-
-        // Set up auth state listener for ongoing state management
-        console.log('Setting up auth state listener...');
+        // Set up auth state listener (simplified approach)
         unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
           if (mounted) {
-            console.log('Auth state change detected:', currentUser ? `User: ${currentUser.email}` : 'No user');
+            console.log('Auth state:', currentUser ? `Authenticated: ${currentUser.email}` : 'Not authenticated');
             setUser(currentUser);
             setLoading(false);
             
@@ -77,7 +63,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         });
 
       } catch (error) {
-        console.error('Auth initialization error:', error);
+        console.error('Auth initialization failed:', error);
         if (mounted) {
           setLoading(false);
         }
@@ -96,37 +82,27 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
-      console.log('Google sign-in process starting...');
+      console.log('Starting Google authentication...');
       setLoading(true);
       
-      // Reset previous auth state
+      // Clear previous state
       localStorage.removeItem('mobileAuthSuccess');
+      localStorage.setItem('authAttempt', 'popup_flow');
       
-      const deviceType = isMobile() ? 'mobile' : 'desktop';
-      console.log(`Device type: ${deviceType}`);
+      // Use popup for ALL devices (mobile and desktop)
+      console.log('Using popup authentication for all devices...');
+      const result = await signInWithPopup(auth, provider);
       
-      if (isMobile()) {
-        console.log('MOBILE: Initiating redirect authentication...');
-        localStorage.setItem('authAttempt', 'mobile_redirect');
-        
-        // Use redirect for mobile - page will navigate to Google
-        await signInWithRedirect(auth, provider);
-        console.log('Redirect initiated - browser should navigate to Google');
-        
-      } else {
-        console.log('DESKTOP: Initiating popup authentication...');
-        
-        // Use popup for desktop
-        const result = await signInWithPopup(auth, provider);
-        if (result?.user) {
-          console.log('Desktop authentication successful:', result.user.email);
-          setUser(result.user);
-          localStorage.setItem('mobileAuthSuccess', 'true');
-        }
-        setLoading(false);
+      if (result?.user) {
+        console.log('Popup authentication successful:', result.user.email);
+        setUser(result.user);
+        localStorage.setItem('mobileAuthSuccess', 'true');
+        localStorage.removeItem('authAttempt');
       }
+      setLoading(false);
+      
     } catch (error) {
-      console.error('Authentication process failed:', error);
+      console.error('Popup authentication failed:', error);
       setLoading(false);
       localStorage.removeItem('authAttempt');
       throw error;

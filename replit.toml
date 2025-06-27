@@ -1,6 +1,7 @@
 [deployment]
-run = ["node", "deploy.cjs"]
+run = ["node", "server.cjs"]
 deploymentTarget = "autoscale"
+build = ["npm", "run", "build"]
 
 [env]
 NODE_ENV = "production"

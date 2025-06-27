@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Divider, Flex, Typography } from 'antd'
+import { Divider, Flex, Typography, Button } from 'antd'
+import { LogoutOutlined } from '@ant-design/icons'
 
 import AddTask from './AddTask'
 import Tasks from './Tasks'
 import UpdateModal from './UpdateModal'
+import { useAuth } from './AuthProvider'
 
 const CascadingText: React.FC = () => {
   const [animationPhase, setAnimationPhase] = useState(0);
@@ -56,12 +58,49 @@ const CascadingText: React.FC = () => {
 };
 
 const Todo = () => {
+        const { logout } = useAuth()
+
+        const handleLogout = async () => {
+                try {
+                        await logout()
+                } catch (error) {
+                        console.error('Logout error:', error)
+                }
+        }
+
         return (
                 <div style={{
                         minHeight: '100vh',
                         background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #000814 75%, #001d3d 100%)',
                         padding: '20px'
                 }}>
+                        {/* Logout Button */}
+                        <div style={{ 
+                                position: 'absolute', 
+                                top: '20px', 
+                                right: '20px', 
+                                zIndex: 1000 
+                        }}>
+                                <Button
+                                        type="primary"
+                                        icon={<LogoutOutlined />}
+                                        onClick={handleLogout}
+                                        style={{
+                                                background: 'linear-gradient(135deg, #EC4899, #8B5CF6)',
+                                                border: 'none',
+                                                borderRadius: '12px',
+                                                boxShadow: '0 0 20px rgba(236, 72, 153, 0.4)',
+                                                color: '#fff',
+                                                fontWeight: '600',
+                                                fontSize: '14px',
+                                                height: '44px',
+                                                padding: '0 20px'
+                                        }}
+                                >
+                                        DISCONNECT
+                                </Button>
+                        </div>
+
                         <Flex
                                 vertical
                                 className='container px-3 sm:px-0 mx-auto my-5'

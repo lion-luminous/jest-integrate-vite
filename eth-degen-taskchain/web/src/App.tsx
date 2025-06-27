@@ -11,15 +11,58 @@ function App() {
     connectedUsers, 
     isConnected, 
     address,
+    googleUser,
     deployContract, 
     connectWallet, 
-    initializeMatrix 
+    initializeMatrix,
+    signInWithGoogle,
+    signOutGoogle
   } = useTaskchain()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyber-dark via-purple-900 to-blue-900 text-cyber-cyan">
       <div className="container mx-auto px-4 py-16">
         <header className="text-center mb-16">
+          <div className="flex justify-between items-center mb-8">
+            <div></div>
+            <div>
+              {googleUser ? (
+                <div className="flex items-center space-x-4">
+                  <img 
+                    src={googleUser.photoURL || ''} 
+                    alt="Profile" 
+                    className="w-10 h-10 rounded-full border-2 border-cyber-cyan"
+                  />
+                  <div className="text-left">
+                    <p className="text-cyber-cyan font-orbitron">{googleUser.displayName}</p>
+                    <button 
+                      onClick={signOutGoogle}
+                      className="text-xs text-gray-400 hover:text-cyber-pink"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button 
+                  onClick={async () => {
+                    setLoading('google');
+                    try {
+                      await signInWithGoogle();
+                    } catch (error) {
+                      console.error('Google sign-in failed:', error);
+                    }
+                    setLoading(null);
+                  }}
+                  disabled={loading === 'google'}
+                  className="bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-2 rounded-lg font-orbitron hover:scale-105 transition-transform disabled:opacity-50"
+                >
+                  {loading === 'google' ? 'Signing In...' : 'Sign in with Google'}
+                </button>
+              )}
+            </div>
+          </div>
+          
           <h1 className="text-6xl font-orbitron font-bold mb-4 bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink bg-clip-text text-transparent">
             ETHEREAL DEGENERATE
           </h1>

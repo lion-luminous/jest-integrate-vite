@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useAuth } from './useAuth';
 
 interface Task {
   id: string;
@@ -16,6 +17,7 @@ export function useTaskchain() {
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
+  const { user: googleUser, signInWithGoogle: googleSignIn, signOut: googleSignOut } = useAuth();
 
   // Initialize demo tasks
   useEffect(() => {
@@ -106,11 +108,14 @@ export function useTaskchain() {
     connectedUsers,
     isConnected,
     address,
+    googleUser,
     addTask,
     toggleTask,
     deployContract,
     connectWallet,
     initializeMatrix,
     disconnect,
+    signInWithGoogle: googleSignIn,
+    signOutGoogle: googleSignOut,
   };
 }

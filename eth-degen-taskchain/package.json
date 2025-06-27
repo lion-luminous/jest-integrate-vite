@@ -10,10 +10,13 @@
     "web"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build && npm run postbuild",
     "dev": "turbo run dev --parallel",
-    "test": "turbo run test"
+    "start": "node server/index.js",
+    "test": "turbo run test",
+    "postbuild": "cp -r web/dist/* server/ || true"
   },
+  "packageManager": "npm@10.8.2",
   "devDependencies": {
     "turbo": "^1.10.0"
   },

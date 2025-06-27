@@ -1,43 +1,62 @@
 # ETHEREAL DEGENERATE TASKCHAIN
 
-A cutting-edge Web3 task management platform built with a modern monorepo architecture.
-
-## Architecture
-
-- **contracts/**: Ethereum smart contracts using Hardhat
-- **server/**: Fastify API server 
-- **web/**: React + TypeScript frontend with Web3 integration
+A cutting-edge Web3 task management platform with cyberpunk aesthetics, featuring Google Firebase authentication and animated task creation wizards.
 
 ## Features
 
-- 🔗 Web3 wallet integration with RainbowKit
-- 📝 Decentralized task management
-- 🎨 Cyberpunk-themed UI with Orbitron font
-- ⚡ Fast development with Turbo monorepo
-- 🚀 Production-ready deployment
+- 🔥 Google Firebase Authentication
+- ⚡ One-Click Task Creation Wizard with 6 pre-built templates
+- 🎮 Cyberpunk-themed UI with smooth animations
+- 📱 Fully responsive design (mobile-optimized)
+- 🚀 Real-time task management and tracking
+- 🌐 Web3-ready architecture
 
-## Quick Start
+## Deployment
+
+This application is configured for Replit Deployments:
+
+1. **Build Command**: `npm run build`
+2. **Start Command**: `node server/index.js`
+3. **Port**: 5000
+4. **Health Check**: `/health`
+
+### Environment Variables Required
+
+- `VITE_FIREBASE_API_KEY`
+- `VITE_FIREBASE_AUTH_DOMAIN`
+- `VITE_FIREBASE_PROJECT_ID`
+
+### Architecture
+
+- **Frontend**: React + TypeScript + Vite + TailwindCSS
+- **Backend**: Fastify server serving static files
+- **Authentication**: Google Firebase Auth
+- **Build System**: Turbo monorepo
+- **Deployment**: Replit Cloud Run
+
+## Development
 
 ```bash
 # Install dependencies
 npm install
 
-# Start all services in development
-npm run dev
-
-# Build for production
+# Build all workspaces
 npm run build
+
+# Start production server
+npm start
+
+# Development mode
+npm run dev
 ```
 
-## Tech Stack
+## Project Structure
 
-- **Frontend**: React, TypeScript, Vite, TailwindCSS, Wagmi, RainbowKit
-- **Backend**: Fastify, Node.js
-- **Blockchain**: Hardhat, OpenZeppelin, Ethereum
-- **Monorepo**: Turbo
-
-## Development
-
-The project uses Turbo to orchestrate the monorepo build pipeline. Each workspace has its own package.json and can be developed independently.
-
-Built for the digital underground. 🌐
+```
+eth-degen-taskchain/
+├── contracts/          # Smart contract placeholders
+├── server/             # Fastify backend + static files
+├── web/                # React frontend application
+├── turbo.json          # Monorepo build configuration
+└── package.json        # Root workspace configuration
+```

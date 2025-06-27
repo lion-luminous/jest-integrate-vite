@@ -5,7 +5,7 @@ import { useAuth } from './components/AuthProvider'
 import './App.css'
 
 function App() {
-        const { user, loading, logout } = useAuth()
+        const { user, loading } = useAuth()
 
         // Show loading state
         if (loading) {
@@ -19,24 +19,21 @@ function App() {
                 )
         }
 
-        // Force show login page for now
-        return <SimpleConnectWallet />
-
         // Show login if not authenticated
-        // if (!user) {
-        //         return <SimpleConnectWallet />
-        // }
+        if (!user) {
+                return <SimpleConnectWallet />
+        }
 
         // Show todo app if authenticated
-        // return (
-        //         <div className="min-h-screen" 
-        //              style={{ 
-        //                background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #000814 75%, #001d3d 100%)',
-        //                position: 'relative'
-        //              }}>
-        //                 <Todo />
-        //         </div>
-        // )
+        return (
+                <div className="min-h-screen" 
+                     style={{ 
+                       background: 'linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #000814 75%, #001d3d 100%)',
+                       position: 'relative'
+                     }}>
+                        <Todo />
+                </div>
+        )
 }
 
 export default App

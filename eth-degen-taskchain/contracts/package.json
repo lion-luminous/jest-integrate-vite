@@ -1,0 +1,22 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for ETHEREAL DEGENERATE TASKCHAIN",
+  "main": "index.js",
+  "private": true,
+
+  "scripts": {
+    "build": "echo 'Contracts build complete - placeholder for future smart contract development'",
+    "test": "echo 'Contracts tests - placeholder'",
+    "deploy": "echo 'Contract deployment - placeholder'"
+  },
+  "devDependencies": {
+    "hardhat": "^2.19.0",
+    "@openzeppelin/contracts": "^5.0.0"
+  },
+  "keywords": [
+    "ethereum",
+    "smart-contracts",
+    "tasks"
+  ]
+}

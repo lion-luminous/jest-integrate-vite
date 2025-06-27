@@ -43,16 +43,31 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const checkRedirectResult = async () => {
       try {
+        console.log('Checking for redirect result...');
         const result = await getRedirectResult(auth);
-        if (result && mounted) {
+        if (result && result.user && mounted) {
           console.log('Redirect sign-in successful:', result.user);
+          setUser(result.user);
+          setLoading(false);
+          return true;
         }
+        return false;
       } catch (error) {
         console.error('Redirect sign-in error:', error);
+        return false;
       }
     };
 
-    checkRedirectResult();
+    // Always check for redirect result on page load (critical for mobile flow)
+    const initAuth = async () => {
+      const hadRedirectResult = await checkRedirectResult();
+      if (!hadRedirectResult && mounted) {
+        // Only set up auth state listener if no redirect result was found
+        setLoading(false);
+      }
+    };
+
+    initAuth();
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (mounted) {
@@ -70,15 +85,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
+      setLoading(true);
       if (isMobile()) {
-        // Use redirect for mobile devices
+        // Use redirect for mobile devices - this will redirect away from the page
+        console.log('Starting mobile redirect authentication...');
         await signInWithRedirect(auth, provider);
+        // Note: execution stops here on mobile as page redirects
       } else {
         // Use popup for desktop
-        await signInWithPopup(auth, provider);
+        console.log('Starting desktop popup authentication...');
+        const result = await signInWithPopup(auth, provider);
+        if (result) {
+          console.log('Desktop authentication successful:', result.user);
+        }
       }
     } catch (error) {
       console.error('Login failed:', error);
+      setLoading(false);
       throw error;
     }
   };

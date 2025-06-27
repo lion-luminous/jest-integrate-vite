@@ -1,5 +1,7 @@
 {
-	"name": "todo-list",
+"scripts": {
+   "start": "node index.js"
+}
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",

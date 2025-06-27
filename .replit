@@ -1,4 +1,15 @@
-modules = ["nodejs-20"]
+run = "npm start"
+
+[deployment]
+schemaVersion = 2            # required
+startCommand   = "npm start" # uses script below
+healthcheckPath = "/health"  # Express handler returns 200
+readinessTimeout = 60        # seconds before Deploy gives up
+
+# Only ONE port mapping: app binds to $PORT inside container
+[[ports]]
+localPort    = 5000          # matches process.env.PORT in server
+externalPort = 80            # public
 [nix]
 packages = ["git"]
 channel = "stable-24_05"

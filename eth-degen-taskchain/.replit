@@ -1,13 +1,14 @@
-run = "cd eth-degen-taskchain && node server/index.js"
+run = "node server/index.js"
 entrypoint = "server/index.js"
 
 [deployment]
-run = ["npm", "run", "build"]
+run = ["node", "server/index.js"]
 deploymentTarget = "cloudrun"
-ignorePorts = false
+build = ["npm", "install"]
 
 [env]
 NODE_ENV = "production"
+PORT = "5000"
 
 [nix]
 channel = "stable-22_11"
@@ -28,6 +29,3 @@ start = "typescript-language-server --stdio"
 
 [gitHubImport]
 requiredFiles = [".replit", "replit.nix"]
-
-[deployment.build]
-run = "npm run build"

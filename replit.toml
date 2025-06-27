@@ -1,8 +1,0 @@
-[deployment]
-run = ["node", "server.cjs"]
-deploymentTarget = "autoscale"
-build = ["npm", "run", "build"]
-
-[env]
-NODE_ENV = "production"
-PORT = "5000"

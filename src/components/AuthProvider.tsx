@@ -79,6 +79,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = async () => {
     try {
       await signOut(auth);
+      // Clear any local storage or session storage
+      localStorage.clear();
+      sessionStorage.clear();
     } catch (error) {
       console.error('Logout failed:', error);
       throw error;

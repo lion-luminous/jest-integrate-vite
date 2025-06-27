@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Fastify server for ETHEREAL DEGENERATE TASKCHAIN",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Server build complete'",
+    "dev": "node index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.24.0",
+    "@fastify/static": "^6.12.0",
+    "googleapis": "^128.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "keywords": [
+    "fastify",
+    "api",
+    "server"
+  ]
+}

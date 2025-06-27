@@ -1,6 +1,6 @@
 [deployment]
 build = ["npm", "run", "build"]
-run = ["node", "preview-server.js"]
+run = ["node", "preview-server.cjs"]
 deploymentTarget = "autoscale"
 publicDir = "dist"
 

@@ -87,24 +87,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.log('Starting Google authentication...');
       setLoading(true);
       
-      // Detect if we're on mobile
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      if (isMobile) {
-        console.log('Using redirect for mobile device');
-        // Use redirect for mobile
-        await signInWithRedirect(auth, provider);
-        // Don't set loading to false here - redirect will handle it
-      } else {
-        console.log('Using popup for desktop');
-        // Use popup for desktop
-        const result = await signInWithPopup(auth, provider);
-        if (result?.user) {
-          console.log('Desktop authentication successful:', result.user.email);
-          setUser(result.user);
-        }
-        setLoading(false);
-      }
+      // Always use redirect for better mobile compatibility
+      console.log('Using redirect authentication for all devices');
+      await signInWithRedirect(auth, provider);
+      // The page will redirect, so we don't set loading to false here
       
     } catch (error) {
       console.error('Authentication error:', error);

@@ -1,0 +1,11 @@
+run = "turbo run dev --parallel"
+
+[deployment]
+schemaVersion   = 2
+startCommand    = "node server/index.js"
+healthcheckPath = "/health"
+readinessTimeout = 60
+
+[[ports]]
+localPort    = 5000
+externalPort = 80

@@ -1,0 +1,28 @@
+{
+  "name": "eth-degen-taskchain",
+  "version": "1.0.0",
+  "description": "ETHEREAL DEGENERATE TASKCHAIN - Web3 task management platform",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "contracts",
+    "server", 
+    "web"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.0"
+  },
+  "keywords": [
+    "web3",
+    "ethereum",
+    "tasks",
+    "blockchain"
+  ],
+  "author": "Mark Mlynski <mark@example.com>",
+  "license": "MIT"
+}

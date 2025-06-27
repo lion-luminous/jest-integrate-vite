@@ -19,12 +19,7 @@ function App() {
                 )
         }
 
-        // Show login if not authenticated
-        if (!user) {
-                return <SimpleConnectWallet />
-        }
-
-        // Show todo app if authenticated
+        // Always show todo app (with authentication option built-in)
         return (
                 <div className="min-h-screen" 
                      style={{ 

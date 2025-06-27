@@ -1,21 +1,4 @@
-run = "npm start"
-run = "npm start"
-
-[deployment]
-schemaVersion = 2
-startCommand   = "npm start"
-healthcheckPath = "/health"
-readinessTimeout = 60
-
-[[ports]]
-localPort    = 5000   # matches code below
-externalPort = 80
-
-
-# Only ONE port mapping: app binds to $PORT inside container
-[[ports]]
-localPort    = 5000          # matches process.env.PORT in server
-externalPort = 80            # public
+modules = ["nodejs-20"]
 [nix]
 packages = ["git"]
 channel = "stable-24_05"
@@ -23,10 +6,6 @@ channel = "stable-24_05"
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 5000
-externalPort = 3000
 
 [workflows]
 runButton = "Project"
@@ -38,25 +17,13 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Todo App Server"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Production Build"
+args = "Production Server"
 
 [[workflows.workflow]]
-name = "Todo App Server"
+name = "Production Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev -- --host 0.0.0.0 --port 5000 --force"
+args = "node server.js"
 waitForPort = 5000
-
-[[workflows.workflow]]
-name = "Production Build"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run build"

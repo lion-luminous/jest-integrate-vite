@@ -4,7 +4,7 @@
   "description": "Smart contracts for ETHEREAL DEGENERATE TASKCHAIN",
   "main": "index.js",
   "private": true,
-  "type": "module",
+
   "scripts": {
     "build": "hardhat compile",
     "test": "hardhat test",

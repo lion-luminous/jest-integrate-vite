@@ -1,15 +1,51 @@
 import { useState } from 'react'
 import { useAuth } from './hooks/useAuth'
+import { TaskWizard } from './components/TaskWizard'
+import { TaskList } from './components/TaskList'
 import './App.css'
+
+interface Task {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  priority: 'low' | 'medium' | 'high';
+  deadline?: string;
+  completed: boolean;
+  createdAt: string;
+}
 
 function App() {
   const [loading, setLoading] = useState<string | null>(null)
-  const [taskCount, setTaskCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>([])
+  const [showWizard, setShowWizard] = useState(false)
+  const [showTaskList, setShowTaskList] = useState(false)
   const { user: googleUser, signInWithGoogle, signOut: signOutGoogle } = useAuth()
+
+  const handleCreateTask = (taskData: Omit<Task, 'id' | 'completed' | 'createdAt'>) => {
+    const newTask: Task = {
+      ...taskData,
+      id: Date.now().toString(),
+      completed: false,
+      createdAt: new Date().toISOString()
+    }
+    setTasks(prev => [...prev, newTask])
+    setShowWizard(false)
+  }
+
+  const handleToggleTask = (id: string) => {
+    setTasks(prev => prev.map(task => 
+      task.id === id ? { ...task, completed: !task.completed } : task
+    ))
+  }
+
+  const handleDeleteTask = (id: string) => {
+    setTasks(prev => prev.filter(task => task.id !== id))
+  }
 
   const handleInitializeMatrix = () => {
     setLoading('matrix')
-    setTaskCount(prev => prev + 1)
+    setShowWizard(true)
     setTimeout(() => setLoading(null), 1500)
   }
 
@@ -17,9 +53,19 @@ function App() {
     setLoading('deploy')
     // Simulate deployment
     await new Promise(resolve => setTimeout(resolve, 2000))
-    setTaskCount(prev => prev + 1)
+    // Create a deployment task automatically
+    handleCreateTask({
+      title: 'Smart Contract Deployed',
+      description: 'TaskChain contract successfully deployed to mainnet',
+      category: 'Blockchain',
+      priority: 'high',
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+    })
     setLoading(null)
   }
+
+  const activeTaskCount = tasks.filter(task => !task.completed).length
+  const completedTaskCount = tasks.filter(task => task.completed).length
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyber-dark via-purple-900 to-blue-900 text-cyber-cyan">
@@ -111,28 +157,60 @@ function App() {
               <h3 className="text-2xl font-orbitron text-cyber-pink mb-4">System Status</h3>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-cyber-cyan">{taskCount}</div>
+                  <div className="text-3xl font-bold text-cyber-cyan">{activeTaskCount}</div>
                   <div className="text-sm text-gray-400">Active Tasks</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-cyber-purple">{googleUser ? '1' : '0'}</div>
-                  <div className="text-sm text-gray-400">Connected Users</div>
+                  <div className="text-3xl font-bold text-cyber-purple">{completedTaskCount}</div>
+                  <div className="text-sm text-gray-400">Completed Tasks</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-cyber-pink">∞</div>
-                  <div className="text-sm text-gray-400">Possibilities</div>
+                  <div className="text-3xl font-bold text-cyber-pink">{googleUser ? '1' : '0'}</div>
+                  <div className="text-sm text-gray-400">Connected Users</div>
                 </div>
               </div>
-              <button 
-                onClick={handleInitializeMatrix}
-                disabled={loading === 'matrix'}
-                className="mt-6 bg-gradient-to-r from-cyber-pink to-red-500 text-white px-8 py-3 rounded-lg font-orbitron hover:scale-105 transition-transform disabled:opacity-50"
-              >
-                {loading === 'matrix' ? 'Initializing...' : 'Initialize Task Matrix'}
-              </button>
+              <div className="flex gap-4 mt-6 flex-wrap justify-center">
+                <button 
+                  onClick={handleInitializeMatrix}
+                  disabled={loading === 'matrix'}
+                  className="bg-gradient-to-r from-cyber-pink to-red-500 text-white px-8 py-3 rounded-lg font-orbitron hover:scale-105 transition-transform disabled:opacity-50"
+                >
+                  {loading === 'matrix' ? 'Initializing...' : 'Create New Task'}
+                </button>
+                
+                {tasks.length > 0 && (
+                  <button 
+                    onClick={() => setShowTaskList(!showTaskList)}
+                    className="bg-gradient-to-r from-cyber-purple to-indigo-500 text-white px-8 py-3 rounded-lg font-orbitron hover:scale-105 transition-transform"
+                  >
+                    {showTaskList ? 'Hide Tasks' : 'View All Tasks'}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
+
+          {/* Task List Section */}
+          {showTaskList && tasks.length > 0 && (
+            <div className="mt-12">
+              <div className="bg-gray-900/30 backdrop-blur-sm border border-cyber-cyan/30 rounded-lg p-8">
+                <h3 className="text-2xl font-orbitron text-cyber-cyan mb-6 text-center">Task Management</h3>
+                <TaskList 
+                  tasks={tasks}
+                  onToggleTask={handleToggleTask}
+                  onDeleteTask={handleDeleteTask}
+                />
+              </div>
+            </div>
+          )}
         </main>
+
+        {/* Task Creation Wizard */}
+        <TaskWizard
+          isOpen={showWizard}
+          onClose={() => setShowWizard(false)}
+          onCreateTask={handleCreateTask}
+        />
       </div>
     </div>
   )

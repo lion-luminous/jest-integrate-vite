@@ -27,10 +27,12 @@ app.get('/api/status', (_, reply) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen({ port: PORT, host: '0.0.0.0' }).then(() => {
   console.log(`🚀 ETHEREAL DEGENERATE TASKCHAIN Server running on port ${PORT}`);
+  console.log(`📊 Health endpoint: http://0.0.0.0:${PORT}/health`);
+  console.log(`🌐 App URL: http://0.0.0.0:${PORT}`);
 }).catch(err => {
   app.log.error(err);
   process.exit(1);

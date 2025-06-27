@@ -1,11 +1,32 @@
-run = "turbo run dev --parallel"
+run = "npm run build && npm start"
+entrypoint = "server/index.js"
 
 [deployment]
-schemaVersion   = 2
-startCommand    = "node server/index.js"
-healthcheckPath = "/health"
-readinessTimeout = 60
+run = ["npm", "run", "build"]
+deploymentTarget = "cloudrun"
 
-[[ports]]
-localPort    = 5000
-externalPort = 80
+[env]
+NODE_ENV = "production"
+
+[nix]
+channel = "stable-22_11"
+
+[packager]
+language = "nodejs"
+
+[packager.features]
+enabledForHosting = false
+packageSearch = true
+guessImports = true
+
+[languages.javascript]
+pattern = "**/{*.js,*.jsx,*.ts,*.tsx,*.json}"
+
+[languages.javascript.languageServer]
+start = "typescript-language-server --stdio"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
+
+[deployment.build]
+run = "npm run build"

@@ -27,6 +27,10 @@ args = "Production Server"
 task = "workflow.run"
 args = "TASKCHAIN Server"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Production TASKCHAIN"
+
 [[workflows.workflow]]
 name = "Production Server"
 author = "agent"
@@ -44,3 +48,12 @@ author = "agent"
 task = "shell.exec"
 args = "cd eth-degen-taskchain/server && node index.js"
 waitForPort = 3000
+
+[[workflows.workflow]]
+name = "Production TASKCHAIN"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd eth-degen-taskchain && npm run build && npm start"
+waitForPort = 5000

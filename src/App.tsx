@@ -19,7 +19,12 @@ function App() {
                 )
         }
 
-        // Always show todo app (with authentication option built-in)
+        // Show bouncing Google authentication page if not authenticated
+        if (!user) {
+                return <SimpleConnectWallet />
+        }
+
+        // Show todo app with tasks portal if authenticated
         return (
                 <div className="min-h-screen" 
                      style={{ 

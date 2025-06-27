@@ -10,7 +10,7 @@ const app = Fastify({
 
 // Register static file serving for the web build
 app.register(import('@fastify/static'), { 
-  root: path.join(__dirname, '../web/dist'),
+  root: path.join(__dirname, '.'),
   prefix: '/'
 });
 

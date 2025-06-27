@@ -168,6 +168,12 @@ This is a React-based todo application built with TypeScript and Vite. The app f
   - Created preview-server.cjs with CommonJS compatibility and health check endpoint
   - Updated deployment configuration to use npm run build and node preview-server.cjs
   - Application now fully deployment-ready with proper Replit Autoscale configuration
+- June 27, 2025: Optimized deployment for large dependency builds
+  - Created simple-deploy.js to handle slow build processes asynchronously
+  - Implemented fallback serving strategy for immediate deployment availability
+  - Updated replit.toml to use streamlined deployment approach
+  - Fixed deployment timeout issues with large Firebase and Ant Design bundles
+  - Server starts immediately while build runs in background
 
 ## User Preferences
 
